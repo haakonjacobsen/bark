@@ -1,27 +1,11 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-
+import styles from '../styles/screens';
 
 export default function SearchScreen() {
   return (
-    <View style={styles.search}>
-        <Text>Home screen</Text>
+    <View style={[styles.screen, styles.search]}>
+        <Text>Search screen</Text>
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  search: {
-    borderColor: 'black',
-    borderRightWidth: 1,
-    borderLeftWidth: 1,
-    borderBottomWidth: 1,
-    borderTopWidth: 1,
-    height: '100%',
-    width: '100%',
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center'
-  }
-});

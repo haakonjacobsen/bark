@@ -1,27 +1,14 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { Text, View } from 'react-native';
+import styles from '../styles/screens';
 
 
 export default function FavoriteScreen() {
   return (
-    <View style={styles.favorite}>
-        <Text>Home screen</Text>
+    <View style={styles.screen}>
+        <Text>Favorite screen</Text>
     </View>
   );
 }
 
-const styles = StyleSheet.create({
-  favorite: {
-    borderColor: 'black',
-    borderRightWidth: 1,
-    borderLeftWidth: 1,
-    borderBottomWidth: 1,
-    borderTopWidth: 1,
-    height: '100%',
-    width: '100%',
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center'
-  }
-});
