@@ -18,7 +18,6 @@ function HorizontalList(props:ListProps) {
           <Breeder />
           <Breeder />
           <Breeder />
-          <Breeder />
           <DogLabel />
           <DogLabel />
           <DogLabel />

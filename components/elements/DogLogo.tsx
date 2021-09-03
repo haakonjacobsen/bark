@@ -10,7 +10,7 @@ type Dog = {
   breed: string;
 }
 
-export default function DogLabel() {
+export default function DogLogo() {
   return (
     <View style={styles.dogLogo}>
       <DogSvg/>

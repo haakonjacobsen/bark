@@ -7,6 +7,8 @@ import postStyles from '../styles/posts';
 import {Roboto_400Regular} from "@expo-google-fonts/dev";
 import BigCard from "../components/cards/BigCard";
 import HorizontalList from "../navigation/HorizontalList"
+import PostNearbyList from "../navigation/PostNearbyList";
+import DogMatcher from "../components/cards/DogMatcher";
 
 type PostProps = {
   title: string;
@@ -21,8 +23,11 @@ export default function HomeScreen() {
   return (
     <ScrollView>
       <View style={[defaultStyles.screen]}>
-        <HorizontalList title={'Populære hunderaser'}/>
-        <HorizontalList title={'Populære hunderaser'}/>
+        <DogMatcher/>
+        <HorizontalList title={'Popular Breeds'}/>
+        <PostNearbyList/>
+        <DogMatcher/>
+        <HorizontalList title={'Certified Breeders'}/>
         <BigCard
           title={'Hund selges'}
           picture={['../../assets/mock/picture/post-image.jpg']}
