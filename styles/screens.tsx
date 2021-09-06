@@ -1,12 +1,18 @@
 import { StyleSheet } from 'react-native';
 
 const defaultStyles = StyleSheet.create({
-  screen: {
+  defScreen: {
     display: 'flex',
     backgroundColor: '#FFFFFF',
     width: '100%',
     height: '100%',
     padding: 20,
+  },
+  fullScreen: {
+    display: 'flex',
+    backgroundColor: '#FFFFFF',
+    width: '100%',
+    height: '100%',
   },
   home:{
   },

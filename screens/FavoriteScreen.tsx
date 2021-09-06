@@ -1,14 +1,19 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { Text, View } from 'react-native';
-import styles from '../styles/screens';
+import {Image, StyleSheet, View} from 'react-native';
+import defaultStyles from '../styles/screens';
+import Price from "../components/elements/Price";
+import Age from "../components/elements/Age";
+import DogLabel from "../components/elements/DogLabel";
+import PostScreen from "./PostScreen";
+import WikiScreen from "./WikiScreen";
 
 
-export default function FavoriteScreen() {
+export default function FavoriteScreen(props:{price:number; breed:string; age:number;}) {
   return (
-    <View style={styles.screen}>
-        <Text>Favorite screen</Text>
-    </View>
+    <WikiScreen breed={"Golden Retriver"} />
   );
 }
 
+const styles = StyleSheet.create({
+
+});

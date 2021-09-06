@@ -1,7 +1,7 @@
 import React from 'react';
 import {ScrollView, StyleSheet, View, Text} from "react-native";
 import Breeder from "../components/elements/DogBreeder";
-import DogLabel from "../components/elements/DogLabel";
+import DogTag from "../components/elements/DogTag";
 import MediumCard from "../components/cards/MediumCard";
 import { Dimensions } from 'react-native';
 const screenWidth = Dimensions.get('window').width;

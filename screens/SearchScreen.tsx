@@ -4,7 +4,7 @@ import styles from '../styles/screens';
 
 export default function SearchScreen() {
   return (
-    <View style={[styles.screen, styles.search]}>
+    <View style={[styles.defScreen, styles.defScreen]}>
         <Text>Search screen</Text>
     </View>
   );

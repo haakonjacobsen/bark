@@ -18,37 +18,27 @@ type PostProps = {
   dogAge: number;
   dogBreed: string;
 }
+const mockProps = {
+  title: 'Hund selges',
+  picture: ['../../assets/mock/picture/post-image.jpg'],
+  price: 3500,
+  dogAge: 340,
+  dogBreed: 'Golden Retriver'
+}
 
 export default function HomeScreen() {
   return (
     <ScrollView>
-      <View style={[defaultStyles.screen]}>
+      <View style={[defaultStyles.defScreen]}>
         <DogMatcher/>
         <HorizontalList title={'Popular Breeds'}/>
         <PostNearbyList/>
         <DogMatcher/>
         <HorizontalList title={'Certified Breeders'}/>
-        <BigCard
-          title={'Hund selges'}
-          picture={['../../assets/mock/picture/post-image.jpg']}
-          price={3500}
-          dogAge={340}
-          dogBreed={'Golden Retriver'}
-        />
-        <BigCard
-          title={'Hund selges'}
-          picture={['../../assets/mock/picture/post-image.jpg']}
-          price={3000}
-          dogAge={998}
-          dogBreed={'Golden Retriver'}
-        />
-        <BigCard
-          title={'Hund selges'}
-          picture={['../../assets/mock/picture/post-image.jpg']}
-          price={3000}
-          dogAge={998}
-          dogBreed={'Golden Retriver'}
-        />
+        <BigCard post={mockProps} roundCorners={true}/>
+        <BigCard post={mockProps} roundCorners={true}/>
+        <BigCard post={mockProps} roundCorners={true}/>
+        <BigCard post={mockProps} roundCorners={true}/>
       </View>
     </ScrollView>
   );

@@ -1,7 +1,7 @@
 import * as React from "react"
 import Svg, { SvgProps, Path } from "react-native-svg"
 
-function DogSvg(props: SvgProps) {
+export default function DogSvg(props: SvgProps) {
   return (
     <Svg
       viewBox="0 0 80 80"
@@ -37,5 +37,3 @@ function DogSvg(props: SvgProps) {
     </Svg>
   )
 }
-
-export default DogSvg
