@@ -2,9 +2,6 @@ import * as React from "react"
 import Svg, { SvgProps, Path } from "react-native-svg"
 
 export default function StatBar(props:{statNumber:number}) {
-  if (props.statNumber < 1 || props.statNumber > 7){
-    props.statNumber = 0
-  }
   return (
     <Svg viewBox="0 0 148 11" fill="none">
       <Path d="M1.54169 3.90797C2.0529 1.62382 4.08031 0 6.42098 0H21.1429L18.7265 10.7964H6.24275C3.04091 10.7964 0.664153 7.82886 1.36345 4.70432L1.54169 3.90797Z" fill={(props.statNumber >= 1) ? ((props.statNumber > 1)?"#FBD59D":"#FFC876") : "#C4C4C4"}/>

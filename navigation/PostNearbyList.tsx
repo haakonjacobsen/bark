@@ -1,53 +1,40 @@
 import React from 'react';
 import {ScrollView, StyleSheet, View, Text} from "react-native";
-import Breeder from "../components/elements/DogBreeder";
-import DogTag from "../components/elements/DogTag";
 import MediumCard from "../components/cards/MediumCard";
-import { Dimensions } from 'react-native';
-const screenWidth = Dimensions.get('window').width;
 
-function PostNearbyList() {
+const mockProps = {
+  title: 'Hund selges',
+  picture: ['../../assets/mock/picture/post-image.jpg'],
+  price: 3500,
+  dogAge: 340,
+  dogBreed: 'Golden Retriver'
+}
+
+function PostNearbyList(props:{title:string}) {
   return (
     <View style={styles.container}>
       <View style={styles.listHeader}>
-        <Text style={styles.listHeaderText}>Post Nearby</Text>
+        <Text style={styles.listHeaderText}>{props.title}</Text>
       </View>
       <ScrollView style={styles.listItems} horizontal={true} showsHorizontalScrollIndicator={false}>
-        <MediumCard
-          title={'Hund selges'}
-          picture={['../../assets/mock/picture/post-image.jpg']}
-          price={3000}
-          dogAge={998}
-          dogBreed={'Golden Retriver'}
-        />
-        <MediumCard
-          title={'Hund selges'}
-          picture={['../../assets/mock/picture/post-image.jpg']}
-          price={3000}
-          dogAge={998}
-          dogBreed={'Golden Retriver'}
-        />
-        <MediumCard
-          title={'Hund selges'}
-          picture={['../../assets/mock/picture/post-image.jpg']}
-          price={3000}
-          dogAge={998}
-          dogBreed={'Golden Retriver'}
-        />
-        <MediumCard
-          title={'Hund selges'}
-          picture={['../../assets/mock/picture/post-image.jpg']}
-          price={3000}
-          dogAge={998}
-          dogBreed={'Golden Retriver'}
-        />
-        <MediumCard
-          title={'Hund selges'}
-          picture={['../../assets/mock/picture/post-image.jpg']}
-          price={3000}
-          dogAge={998}
-          dogBreed={'Golden Retriver'}
-        />
+        <View style={{marginRight:20}}>
+          <MediumCard post={mockProps} />
+        </View>
+        <View style={{marginRight:20}}>
+          <MediumCard post={mockProps} />
+        </View>
+        <View style={{marginRight:20}}>
+          <MediumCard post={mockProps} />
+        </View>
+        <View style={{marginRight:20}}>
+          <MediumCard post={mockProps} />
+        </View>
+        <View style={{marginRight:20}}>
+          <MediumCard post={mockProps} />
+        </View>
+        <View style={{marginRight:20}}>
+          <MediumCard post={mockProps} />
+        </View>
       </ScrollView>
     </View>
   );
@@ -55,13 +42,14 @@ function PostNearbyList() {
 
 const styles = StyleSheet.create({
   container:{
+    marginBottom: 40,
     width: '100%',
     display: "flex",
-    marginBottom: 40
   },
   listHeader:{
   },
   listHeaderText:{
+    color:"#576071",
     fontSize: 25,
     fontWeight: '700'
   },

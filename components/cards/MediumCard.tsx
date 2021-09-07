@@ -8,22 +8,21 @@ const screenWidth = Dimensions.get('window').width;
 
 type PostProps = {
   title: string;
-  //post_age: bigint;
-  picture: [string];
+  picture: string[];
   price: number;
   dogAge: number;
   dogBreed: string;
 }
 
-export default function MediumCard(props:PostProps) {
+export default function MediumCard(props:{post:PostProps}) {
   return (
     <View style={[styles.cardContainer]}>
       <View style={[styles.mediumCard]}>
-        <DogLabel breed={props.dogBreed} inColumn={false}/>
+        <DogLabel breed={'Golden retriver'} inColumn={false}/>
         <Image source={require('../../assets/mock/picture/post-image.jpg')} style={styles.picture}/>
         <View style={styles.infoBar}>
-          <Price price={props.price}/>
-          <Age age={props.dogAge}/>
+          <Price price={props.post.price}/>
+          <Age age={props.post.dogAge}/>
         </View>
       </View>
     </View>
@@ -35,8 +34,7 @@ const styles = StyleSheet.create({
     color: '#616161'
   },
   cardContainer:{
-    width: screenWidth/2,
-    marginRight: 20,
+    width: screenWidth/2-30,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.15,

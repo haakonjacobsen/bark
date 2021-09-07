@@ -37,9 +37,9 @@ const styles = StyleSheet.create({
     shadowRadius: 5,
   },
   bigCard: {
+    marginBottom: 20,
     width: '100%',
     aspectRatio: 1.1,
-    marginBottom: 20,
     overflow: "hidden",
     display:"flex",
     flexDirection: "column",

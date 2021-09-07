@@ -6,7 +6,6 @@ export default function DogSvg(props: SvgProps) {
     <Svg
       viewBox="0 0 80 80"
       fill="none"
-      xmlns="http://www.w3.org/2000/svg"
       {...props}
     >
       <Path
