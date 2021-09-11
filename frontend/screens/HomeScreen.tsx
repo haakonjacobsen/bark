@@ -14,7 +14,13 @@ const mockProps = {
   dogBreed: 'Golden Retriver'
 }
 
+
 export default function HomeScreen() {
+  fetch('http://localhost:3000/posts').then(
+    result => {
+      console.log(JSON.stringify(result));
+    });
+
   return (
     <ScrollView>
       <View style={[defaultStyles.defScreen]}>
