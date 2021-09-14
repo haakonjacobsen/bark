@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import { ScrollView, View} from 'react-native';
 import defaultStyles from '../styles/screens';
 import BigCard from "../components/cards/BigCard";
@@ -14,12 +14,19 @@ const mockProps = {
   dogBreed: 'Golden Retriver'
 }
 
+type PostProps = {
+  __v: number;
+  _id: string;
+  date: string;
+  description: string;
+  dogAge: number;
+  dogBreed: string;
+  pictures: string[];
+  price: number;
+}
 
 export default function HomeScreen() {
-  fetch('http://localhost:3000/posts').then(
-    result => {
-      console.log(JSON.stringify(result));
-    });
+  const [posts, setPosts] = useState<PostProps[]>([]);
 
   return (
     <ScrollView>
@@ -29,10 +36,9 @@ export default function HomeScreen() {
         <PostNearbyList title={"Dogs nearby"}/>
         <DogMatcher/>
         <HorizontalList title={'Certified Breeders'}/>
-        <BigCard post={mockProps} roundCorners={true}/>
-        <BigCard post={mockProps} roundCorners={true}/>
-        <BigCard post={mockProps} roundCorners={true}/>
-        <BigCard post={mockProps} roundCorners={true}/>
+        {posts.map((data) => (
+          <BigCard post={data} roundCorners={true}/>
+          ))}
       </View>
     </ScrollView>
   );
