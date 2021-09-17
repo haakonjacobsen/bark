@@ -7,7 +7,7 @@ With the focus on bringing the best infromation together with an easy and fun us
 Bark is first and foremost exclusively intended for dogs, but have a long term goal to include other domestic animals such as cats and horses.
 ## Application 🚀
 The Bark application is designed in [figma](https://www.figma.com/proto/tMuY4Iib45vr69MZ21U5Zi/Bark?page-id=0%3A1&node-id=7%3A4&viewport=241%2C48%2C0.27&scaling=scale-down&starting-point-node-id=7%3A4&show-proto-sidebar=1)
-and is devloped for iOS and Android using React Native with typescript. It is still in development stages, altought the design is close to finised.
+and is developed for iOS and Android using React Native with Typescript. It is still in development stages, although the design is close to finished.
 
 <img height="480px" src="./illustration/picture1.png"><img height="480px" src="./illustration/picture2.png"><img height="480px" src="./illustration/picture3.png"><img height="480px" src="./illustration/picture4.png">
 ## Running development project
