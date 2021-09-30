@@ -3,15 +3,8 @@ import {Image, StyleSheet, View} from 'react-native';
 import Price from "../elements/Price";
 import Age from "../elements/Age";
 import DogLabel from "../elements/DogLabel";
+import {PostProps} from "../../types/PostProps";
 
-type PostProps = {
-  title: string;
-  //post_age: bigint;
-  picture: string[];
-  price: number;
-  dogAge: number;
-  dogBreed: string;
-}
 
 export default function BigCard(props:{post:PostProps, roundCorners:boolean}) {
   return (

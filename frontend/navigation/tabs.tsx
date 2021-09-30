@@ -16,7 +16,9 @@ function Tabs() {
         headerStyle: style.header,
         headerTitleStyle: style.barkHeader,
         tabBarStyle: {backgroundColor: '#EDD994'}}}/>
-      <Tab.Screen name="Search" component={SearchScreen}/>
+      <Tab.Screen name="Search" component={SearchScreen} options={{
+        headerTitleStyle: style.barkHeader,
+        tabBarStyle: {backgroundColor: '#EDD994'}}}/>
       <Tab.Screen name="Favorite" component={FavoriteScreen} options={{
         headerShown: true,
         headerTitle: 'Bark',

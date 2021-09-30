@@ -1,5 +1,5 @@
 import React from 'react';
-import {Image, StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import Svg, { Path } from "react-native-svg";
 import DogSvg from "../svg/DogSvg"
 

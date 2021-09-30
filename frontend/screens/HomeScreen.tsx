@@ -7,7 +7,6 @@ import PostNearbyList from "../navigation/PostNearbyList";
 import DogMatcher from "../components/cards/DogMatcher";
 
 const mockProps = {
-  title: 'Hund selges',
   picture: ['../../assets/mock/picture/post-image.jpg'],
   price: 3500,
   dogAge: 340,
@@ -17,6 +16,7 @@ const mockProps = {
 type PostProps = {
   __v: number;
   _id: string;
+  picture: string;
   date: string;
   description: string;
   dogAge: number;

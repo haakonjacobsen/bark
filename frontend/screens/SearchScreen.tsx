@@ -1,50 +1,66 @@
 import React, {useState} from 'react';
-import {ScrollView, StyleSheet, View} from 'react-native';
+import {ScrollView, SafeAreaView, StyleSheet, View, Text} from 'react-native';
 import defaultStyles from '../styles/screens';
 import BigCard from "../components/cards/BigCard";
 import MediumCard from "../components/cards/MediumCard";
+import {PostProps} from "../types/PostProps";
+import {MockPostData} from "../assets/mock/data/MockPostData";
+import {Dimensions} from "react-native";
+import FilterSvg from "../components/svg/FilterSvg";
 
-const mockProps = {
-  title: 'Hund selges',
-  picture: ['../../assets/mock/picture/post-image.jpg'],
-  price: 3500,
-  dogAge: 340,
-  dogBreed: 'Golden Retriver'
-}
+const screenWidth = Dimensions.get('window').width;
+const screenHeight = Dimensions.get('window').height;
 
 export default function SearchScreen() {
   // 1 = bigCard, 2 = mediumCard, 3 = listView, 4 = mapView
   const [displayType, changeDisplayType] = useState(1);
+  const [searchResult, updateResult] = useState<PostProps[]>(MockPostData);
 
-  if (displayType === 1){
+  function postDisplay(type:number, postData:PostProps[]){
+    if (type === 1){
+      return(
+        <ScrollView>
+          {MockPostData.map(post =>(
+            <BigCard post={post} roundCorners={true}/>
+          ))}
+        </ScrollView>
+      );
+    }
     return (
-      <ScrollView style={[defaultStyles.defScreen]}>
-        <BigCard post={mockProps} roundCorners={true}/>
-        <BigCard post={mockProps} roundCorners={true}/>
-        <BigCard post={mockProps} roundCorners={true}/>
-        <BigCard post={mockProps} roundCorners={true}/>
-        <BigCard post={mockProps} roundCorners={true}/>
-        <BigCard post={mockProps} roundCorners={true}/>
-        <BigCard post={mockProps} roundCorners={true}/>
-        <BigCard post={mockProps} roundCorners={true}/>
+      <ScrollView>
+        <View style={styles.gridView}>
+          {MockPostData.map(post =>(
+            <MediumCard post={post}/>
+          ))}
+        </View>
       </ScrollView>
     );
   }
+
+
   return (
-    <ScrollView style={[defaultStyles.defScreen]}>
-      <View style={styles.gridView}>
-        <MediumCard post={mockProps} />
-        <MediumCard post={mockProps} />
-        <MediumCard post={mockProps} />
-        <MediumCard post={mockProps} />
-        <MediumCard post={mockProps} />
-        <MediumCard post={mockProps} />
-        <MediumCard post={mockProps} />
-        <MediumCard post={mockProps} />
+    <SafeAreaView>
+      <View style={defaultStyles.defScreen}>
+        <View style={[styles.searchAndFilterPanel]}>
+          <View style={[styles.searchHeader]}>
+            <View style={[styles.searchBar, defaultStyles.shadowMedium]}>
+              <Text style={styles.searchText}>Search...</Text>
+            </View>
+            <View style={[styles.filterPanel, defaultStyles.shadowMedium]}>
+              <FilterSvg/>
+            </View>
+          </View>
+          <View style={[styles.sortAndDisplay]}>
+            <View style={[styles.displayPanel]}></View>
+            <View style={[styles.sortPanel]}></View>
+          </View>
+        </View>
+        {postDisplay(displayType, searchResult)}
       </View>
-    </ScrollView>
+    </SafeAreaView>
   );
 }
+
 
 const styles = StyleSheet.create({
   gridView: {
@@ -52,5 +68,56 @@ const styles = StyleSheet.create({
     flexDirection:'row',
     flexWrap:'wrap',
     justifyContent:'space-between'
+  },
+  searchAndFilterPanel:{
+    height: screenHeight/5,
+    width: '100%',
+    marginTop: 20,
+  },
+  searchHeader: {
+    paddingTop: 20,
+    paddingBottom: 20,
+    height: '50%',
+    display: "flex",
+    flexDirection: 'row',
+  },
+  searchBar:{
+    backgroundColor: '#F9F9F9',
+    flexGrow: 1,
+    height: '100%',
+    marginRight: 20,
+    borderRadius: 5,
+    justifyContent: "center"
+  },
+  searchText:{
+    marginLeft: 25,
+    color: '#A1A1A1',
+    fontSize: 25,
+  },
+  filterPanel:{
+    backgroundColor: '#F9F9F9',
+    height: '100%',
+    aspectRatio: 1,
+    borderRadius: 5,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  sortAndDisplay:{
+    flex: 1,
+    borderColor: 'black',
+    borderWidth: 1,
+    justifyContent: 'space-between',
+    flexDirection: 'row'
+  },
+  displayPanel:{
+    backgroundColor: 'green',
+    width: '25%',
+    aspectRatio: 2
+  },
+  sortPanel:{
+    backgroundColor: 'yellow',
+    width: '25%',
+    aspectRatio: 2
   }
 });
