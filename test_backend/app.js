@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const PORT = process.env.PORT || 5000;
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 require('dotenv/config');
@@ -23,6 +24,5 @@ app.get('/', (req, res) => {
 mongoose.connect(process.env.DB_CONNECTION, () =>
     console.log('connected to DB')
 );
-
-// How do we start listeneing to the server
-app.listen(3000);
+v
+app.listen(PORT);
