@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {ScrollView, SafeAreaView, StyleSheet, View, Text} from 'react-native';
 import defaultStyles from '../styles/screens';
 import BigCard from "../components/cards/BigCard";
@@ -14,13 +14,28 @@ const screenHeight = Dimensions.get('window').height;
 export default function SearchScreen() {
   // 1 = bigCard, 2 = mediumCard, 3 = listView, 4 = mapView
   const [displayType, changeDisplayType] = useState(1);
-  const [searchResult, updateResult] = useState<PostProps[]>(MockPostData);
+  const [keyword, changeKeyword] = useState("");
+  const [filter, changeFilter] = useState({});
+  const [searchResult, updateResult] = useState<PostProps[]>([]);
+
+  useEffect(() => {
+    getPosts()
+  }, [filter,keyword]);
+
+  async function getPosts() {
+    const response = await fetch('http://localhost:5000/posts');
+    console.log(response.json())
+  }
+
+  function getMorePosts() {
+    console.log('Load more posts')
+  }
 
   function postDisplay(type:number, postData:PostProps[]){
     if (type === 1){
       return(
         <ScrollView>
-          {MockPostData.map(post =>(
+          {searchResult.map(post =>(
             <BigCard post={post} roundCorners={true}/>
           ))}
         </ScrollView>

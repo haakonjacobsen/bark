@@ -5,6 +5,8 @@ import BigCard from "../components/cards/BigCard";
 import HorizontalList from "../navigation/HorizontalList"
 import PostNearbyList from "../navigation/PostNearbyList";
 import DogMatcher from "../components/cards/DogMatcher";
+import {MockPostData} from "../assets/mock/data/MockPostData";
+import {PostProps} from "../types/PostProps";
 
 const mockProps = {
   picture: ['../../assets/mock/picture/post-image.jpg'],
@@ -13,20 +15,8 @@ const mockProps = {
   dogBreed: 'Golden Retriver'
 }
 
-type PostProps = {
-  __v: number;
-  _id: string;
-  picture: string;
-  date: string;
-  description: string;
-  dogAge: number;
-  dogBreed: string;
-  pictures: string[];
-  price: number;
-}
-
 export default function HomeScreen() {
-  const [posts, setPosts] = useState<PostProps[]>([]);
+  const [posts, setPosts] = useState<PostProps[]>(MockPostData);
 
   return (
     <ScrollView>
