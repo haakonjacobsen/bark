@@ -1,6 +1,7 @@
 import React from 'react';
 import {ScrollView, StyleSheet, View, Text} from "react-native";
 import MediumCard from "../components/cards/MediumCard";
+import defaultStyles from "../styles/screens";
 
 const mockProps = {
   title: 'Hund selges',
@@ -13,8 +14,8 @@ const mockProps = {
 function PostNearbyList(props:{title:string}) {
   return (
     <View style={styles.container}>
-      <View style={styles.listHeader}>
-        <Text style={styles.listHeaderText}>{props.title}</Text>
+      <View style={defaultStyles.sectionHeader}>
+        <Text style={defaultStyles.sectionHeaderText}>{props.title}</Text>
       </View>
       <ScrollView style={styles.listItems} horizontal={true} showsHorizontalScrollIndicator={false}>
         <View style={{marginRight:20}}>

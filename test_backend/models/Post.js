@@ -1,15 +1,29 @@
 const mongoose = require('mongoose');
 
 const PostSchema = mongoose.Schema({
-    dogBreed: String,
-    price: Number,
-    dogAge: Number,
+    dogBreed: {
+        type: String,
+        default: "mixed",
+        required: true
+    },
+    price: {
+        type: Number,
+        required: true,
+    },
+    dogAge: {
+        type: Date,
+        required: true,
+        default: Date.now()
+    },
     description: String,
-    date: {
+    postDate: {
         type: Date,
         default: Date.now()
     },
-    pictures: [String]
+    pictures: {
+        type: [String],
+        default: ['default-picture.jpg']
+    }
 })
 
-module.exports = mongoose.model('Posts', PostSchema);
+module.exports = mongoose.model('Post', PostSchema);

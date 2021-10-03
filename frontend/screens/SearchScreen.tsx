@@ -1,12 +1,14 @@
 import React, {useEffect, useState} from 'react';
-import {ScrollView, SafeAreaView, StyleSheet, View, Text} from 'react-native';
+import {ScrollView, TouchableOpacity, SafeAreaView, StyleSheet, View, Text, Image} from 'react-native';
 import defaultStyles from '../styles/screens';
 import BigCard from "../components/cards/BigCard";
 import MediumCard from "../components/cards/MediumCard";
 import {PostProps} from "../types/PostProps";
-import {MockPostData} from "../assets/mock/data/MockPostData";
 import {Dimensions} from "react-native";
 import FilterSvg from "../components/svg/FilterSvg";
+import DogSvg from "../components/svg/DogSvg";
+import SearchSvg from "../components/svg/SearchSvg";
+import { Searchbar } from 'react-native-paper';
 
 const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
@@ -14,29 +16,60 @@ const screenHeight = Dimensions.get('window').height;
 export default function SearchScreen() {
   // 1 = bigCard, 2 = mediumCard, 3 = listView, 4 = mapView
   const [displayType, changeDisplayType] = useState(1);
-  const [keyword, changeKeyword] = useState("");
+  const [searchQuery, setSearchQuery] = useState('');
   const [filter, changeFilter] = useState({});
   const [searchResult, updateResult] = useState<PostProps[]>([]);
+  const [prevSearch, updatePrevSearch] = useState<String[]>([
+    'Retriver', 'Flatcouated Retriver', 'Stuff', 'Things', 'More Stuff', 'Retriver', 'Flatcouated Retriver', 'Stuff', 'Things', 'More Stuff']);
 
   useEffect(() => {
-    getPosts()
-  }, [filter,keyword]);
+    getPostsQuery(searchQuery, filter)
+  }, [filter, searchQuery]);
 
-  async function getPosts() {
-    const response = await fetch('http://localhost:5000/posts');
-    console.log(response.json())
+  const onChangeSearch = (query: React.SetStateAction<string>) => setSearchQuery(query);
+
+
+  function getPostsQuery(query:string, filter:Object) {
+    try{
+      if (query === '') {
+        fetch('http://192.168.0.15:5000/posts', {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+          }
+        })
+          .then(response => response.json())
+          .then(json => updateResult(json))
+      } else {
+        fetch(`http://192.168.0.15:5000/posts/search/${query}`, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+          }
+        })
+          .then(response => response.json())
+          .then(json => updateResult(json))
+      }
+    } catch (err){
+      console.log('ERROR'+ err)
+    }
   }
 
-  function getMorePosts() {
-    console.log('Load more posts')
+  function setDisplayType(){
+    if(displayType == 2){
+      changeDisplayType(1)
+    }
+    else {
+      changeDisplayType(2)
+    }
   }
 
   function postDisplay(type:number, postData:PostProps[]){
     if (type === 1){
       return(
         <ScrollView>
-          {searchResult.map(post =>(
-            <BigCard post={post} roundCorners={true}/>
+          {searchResult.map((post, index) =>(
+            <BigCard key={index} post={post} roundCorners={true}/>
           ))}
         </ScrollView>
       );
@@ -44,33 +77,72 @@ export default function SearchScreen() {
     return (
       <ScrollView>
         <View style={styles.gridView}>
-          {MockPostData.map(post =>(
-            <MediumCard post={post}/>
+          {searchResult.map((post, index) =>(
+            <MediumCard key={index} post={post}/>
           ))}
         </View>
       </ScrollView>
     );
   }
 
-
   return (
     <SafeAreaView>
       <View style={defaultStyles.defScreen}>
         <View style={[styles.searchAndFilterPanel]}>
           <View style={[styles.searchHeader]}>
-            <View style={[styles.searchBar, defaultStyles.shadowMedium]}>
-              <Text style={styles.searchText}>Search...</Text>
+            <View style={styles.searchBar}>
+              <Searchbar
+                placeholder="Search"
+                onChangeText={onChangeSearch}
+                value={searchQuery}
+              />
             </View>
-            <View style={[styles.filterPanel, defaultStyles.shadowMedium]}>
+            <TouchableOpacity style={[styles.filterPanel, defaultStyles.shadowMedium]} onPress={() => updateResult([])}>
               <FilterSvg/>
-            </View>
+            </TouchableOpacity>
           </View>
-          <View style={[styles.sortAndDisplay]}>
-            <View style={[styles.displayPanel]}></View>
-            <View style={[styles.sortPanel]}></View>
-          </View>
+          {searchResult.length !== 0 ?
+            <View style={[styles.sortAndDisplay]}>
+              <TouchableOpacity style={[styles.displayPanel, defaultStyles.shadowMedium]} onPress={setDisplayType}>
+                <View style={[styles.displayPanelIcon]}>
+                  <DogSvg/>
+                </View>
+                <View style={[styles.displayPanelTextContainer]}>
+                  <Text style={[styles.displayPanelText]}>Rute</Text>
+                </View>
+              </TouchableOpacity>
+              <TouchableOpacity style={[styles.sortPanel, defaultStyles.shadowMedium]}>
+                <View style={[styles.displayPanelIcon]}>
+                  <DogSvg/>
+                </View>
+                <View style={[styles.displayPanelTextContainer]}>
+                  <Text style={[styles.displayPanelText]}>I nærheten</Text>
+                </View>
+              </TouchableOpacity>
+            </View>: null}
         </View>
-        {postDisplay(displayType, searchResult)}
+        {searchResult.length === 0 ?
+          // Blank search screen
+            <ScrollView >
+              <View style={[emptyStyle.container]}>
+                <Image source={require('../assets/gif/search-dog.gif')} style={emptyStyle.picture}/>
+                <View style={[emptyStyle.prevSearchPanel]}>
+                  <View style={[defaultStyles.sectionHeader]}>
+                    <Text style={[defaultStyles.sectionHeaderText]}>Tidligere søk</Text>
+                  </View>
+                  <View>
+                    {prevSearch.map((search, index) => (
+                      <View key={index} style={[emptyStyle.prevSearch]}>
+                        <SearchSvg/>
+                        <Text style={[emptyStyle.prevSearchText]}>{search}</Text>
+                      </View>
+                      ))}
+                  </View>
+                </View>
+              </View>
+            </ScrollView>:
+          postDisplay(displayType, searchResult)
+        }
       </View>
     </SafeAreaView>
   );
@@ -116,23 +188,75 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   sortAndDisplay:{
     flex: 1,
-    borderColor: 'black',
-    borderWidth: 1,
     justifyContent: 'space-between',
     flexDirection: 'row'
   },
   displayPanel:{
-    backgroundColor: 'green',
-    width: '25%',
-    aspectRatio: 2
+    backgroundColor: '#FFFFFF',
+    width: '30%',
+    height: (screenWidth-40)/8,
+    display:'flex',
+    flexDirection:'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 5,
+    borderTopLeftRadius: 0
+  },
+  displayPanelIcon:{
+    height: '100%',
+    aspectRatio: 1
+  },
+  displayPanelTextContainer:{
+    flex: 1,
+    marginLeft: '5%'
+  },
+  displayPanelText:{
+    fontSize: 15,
+    color: '#717171',
+    fontWeight: '600'
   },
   sortPanel:{
-    backgroundColor: 'yellow',
-    width: '25%',
-    aspectRatio: 2
+    backgroundColor: '#FFFFFF',
+    width: '35%',
+    height: (screenWidth-40)/8,
+    display:'flex',
+    flexDirection:'row-reverse',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 5,
+    borderTopRightRadius: 0
+  },
+  sortPanelIcon:{
+    height: '100%',
+    aspectRatio: 1
+  }
+});
+
+const emptyStyle = StyleSheet.create({
+  container: {
+    width: '100%',
+    borderWidth: 1
+  },
+  picture:{
+    width: '100%',
+    height: '30%'
+  },
+  prevSearchPanel:{
+    display: 'flex'
+  },
+  prevSearch:{
+    width: '100%',
+    height: 50,
+    flexDirection: 'row',
+    alignItems: 'center'
+  },
+  prevSearchText:{
+    marginLeft: '3%',
+    fontSize: 20,
+    color:'#767676'
   }
 });

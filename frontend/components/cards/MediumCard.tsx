@@ -14,9 +14,9 @@ type PostProps = {
   dogBreed: string;
 }
 
-export default function MediumCard(props:{post:PostProps}) {
+export default function MediumCard(props:{key:number, post:PostProps}) {
   return (
-    <View style={[styles.cardContainer]}>
+    <View key={props.key} style={[styles.cardContainer]}>
       <View style={[styles.mediumCard]}>
         <DogLabel breed={'Golden retriver'} inColumn={false}/>
         <Image source={require('../../assets/mock/picture/post-image.jpg')} style={styles.picture}/>

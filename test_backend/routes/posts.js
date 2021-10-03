@@ -12,6 +12,18 @@ router.get('/', async (req, res) => {
     }
 });
 
+// SEARCH QUERY
+router.get('/search/:queryText', async (req, res) => {
+    try {
+        const posts = await Post.find({
+            $text: { $search: req.params.queryText}
+        });
+        res.json(posts);
+    } catch (err){
+        res.json({message: err});
+    }
+});
+
 // GET SPECIFIC POSTS
 router.get('/:postId', async (req, res) => {
     try {
@@ -52,9 +64,10 @@ router.delete('/:postId', async (req, res) => {
 // UPDATE A SPECIFIC POST
 router.patch('/:postId', async (req, res) => {
     try {
+        console.log(req.body);
         const updatedPost = await Post.updateOne(
             {_id: req.params.postId},
-            {$set: {description: req.body.description} }
+            {$set: {dogBreed: req.body.dogBreed} }
         );
         res.json(updatedPost)
     } catch (err){

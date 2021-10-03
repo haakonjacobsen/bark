@@ -31,7 +31,16 @@ const defaultStyles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 5,
     marginBottom: 5
-    }
+    },
+  sectionHeader:{
+    width:'100%',
+    marginBottom:10
+  },
+  sectionHeaderText:{
+    color: 'black',
+    fontWeight: '700',
+    fontSize: 25
+  }
 });
 
 export default defaultStyles

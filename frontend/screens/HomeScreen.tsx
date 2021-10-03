@@ -17,15 +17,13 @@ const mockProps = {
 
 export default function HomeScreen() {
   const [posts, setPosts] = useState<PostProps[]>(MockPostData);
-
+  
   return (
     <ScrollView>
       <View style={[defaultStyles.defScreen]}>
         <DogMatcher/>
-        <HorizontalList title={'Popular Breeds'}/>
         <PostNearbyList title={"Dogs nearby"}/>
         <DogMatcher/>
-        <HorizontalList title={'Certified Breeders'}/>
         {posts.map((data) => (
           <BigCard post={data} roundCorners={true}/>
           ))}
