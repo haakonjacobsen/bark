@@ -2,9 +2,15 @@ import { StyleSheet, Text, View} from "react-native";
 import React from "react";
 
 
-export default function Age(props: { age: number; }) {
+export default function Age(props: { age: string; }) {
 
-  function getAge(age:number){
+  function getAge(date:string){
+    const newAge = new Date(date);
+    const today = new Date();
+    const diffInTime = today.getTime() - newAge.getTime();
+    const oneDay = 86400000; //1000 * 60 * 60 * 24
+    const age = Math.round(diffInTime / oneDay);
+
     if (Math.trunc(age/365) > 0){
       return Math.trunc(age/365) + ' year' + (Math.trunc(age/365) === 1 ? '' : 's')
     } else if (Math.trunc(age/7) > 0){

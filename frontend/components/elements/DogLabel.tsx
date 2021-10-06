@@ -4,13 +4,15 @@ import DogSvg from "../svg/DogSvg";
 
 
 export default function DogLabel(props: { breed: string; inColumn:boolean}) {
+  const breed = props.breed.split('-').map(s => s.charAt(0).toUpperCase() + s.substr(1)).join(' ');
+
   if (props.inColumn) {
     return (
       <View style={[styles.breedColumn, styles.infoItem]}>
         <View style={styles.breedSvgColumn}>
           <DogSvg/>
         </View>
-        <Text style={styles.breedTextColumn}>{props.breed}</Text>
+        <Text allowFontScaling style={styles.breedTextColumn}>{breed}</Text>
       </View>
     );
   } else  {
@@ -19,7 +21,7 @@ export default function DogLabel(props: { breed: string; inColumn:boolean}) {
         <View style={styles.breedSvgRow}>
           <DogSvg/>
         </View>
-        <Text adjustsFontSizeToFit style={styles.breedTextRow}>{props.breed}</Text>
+        <Text allowFontScaling style={styles.breedTextRow}>{breed}</Text>
       </View>
     );
   }
@@ -33,7 +35,7 @@ const styles = StyleSheet.create({
     shadowRadius: 5,
   },
   breedColumn:{
-    flex: 1.75,
+    flex: 1,
     backgroundColor: '#FEF6AA',
     display: "flex"
   },
@@ -43,7 +45,7 @@ const styles = StyleSheet.create({
   breedTextColumn:{
     marginBottom: 10,
     height: '20%',
-    textAlign: "center",
+    textAlign: 'center',
     color: '#616161'
   },
   breedRow:{

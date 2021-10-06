@@ -1,14 +1,14 @@
 import React, {useEffect, useState} from 'react';
-import {ScrollView, TouchableOpacity, SafeAreaView, StyleSheet, View, Text, Image} from 'react-native';
+import {ScrollView, Dimensions, SafeAreaView, StyleSheet, View, Text, Image} from 'react-native';
 import defaultStyles from '../styles/screens';
 import BigCard from "../components/cards/BigCard";
 import MediumCard from "../components/cards/MediumCard";
+import ListCard from "../components/cards/ListCard";
 import {PostProps} from "../types/PostProps";
-import {Dimensions} from "react-native";
-import FilterSvg from "../components/svg/FilterSvg";
-import DogSvg from "../components/svg/DogSvg";
-import SearchSvg from "../components/svg/SearchSvg";
-import { Searchbar } from 'react-native-paper';
+import PrevSearchSection from "../components/sections/PrevSearchSection";
+import SearchAndFilterPanel from "../components/panels/SearchAndFilterPanel";
+import NoPostSection from "../components/sections/NoPostSection";
+import MapView from 'react-native-maps';
 
 const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
@@ -19,12 +19,14 @@ export default function SearchScreen() {
   const [searchQuery, setSearchQuery] = useState('');
   const [filter, changeFilter] = useState({});
   const [searchResult, updateResult] = useState<PostProps[]>([]);
-  const [prevSearch, updatePrevSearch] = useState<String[]>([
+  const [prevSearch, updatePrevSearch] = useState<string[]>([
     'Retriver', 'Flatcouated Retriver', 'Stuff', 'Things', 'More Stuff', 'Retriver', 'Flatcouated Retriver', 'Stuff', 'Things', 'More Stuff']);
 
   useEffect(() => {
-    getPostsQuery(searchQuery, filter)
+    getPostsQuery(searchQuery, filter);
+    console.log();
   }, [filter, searchQuery]);
+
 
   const onChangeSearch = (query: React.SetStateAction<string>) => setSearchQuery(query);
 
@@ -55,15 +57,6 @@ export default function SearchScreen() {
     }
   }
 
-  function setDisplayType(){
-    if(displayType == 2){
-      changeDisplayType(1)
-    }
-    else {
-      changeDisplayType(2)
-    }
-  }
-
   function postDisplay(type:number, postData:PostProps[]){
     if (type === 1){
       return(
@@ -74,7 +67,8 @@ export default function SearchScreen() {
         </ScrollView>
       );
     }
-    return (
+    else if(type === 2){
+      return(
       <ScrollView>
         <View style={styles.gridView}>
           {searchResult.map((post, index) =>(
@@ -82,68 +76,52 @@ export default function SearchScreen() {
           ))}
         </View>
       </ScrollView>
+      )
+    }
+    else if(type === 3) {
+      return (
+        <ScrollView>
+          <View style={styles.gridView}>
+            {searchResult.map((post, index) => (
+              <ListCard key={index} post={post}/>
+            ))}
+          </View>
+        </ScrollView>
+      )
+    }
+    else (
+      <View style={styles.mapContainer}>
+        <MapView style={styles.map} />
+      </View>
     );
   }
 
   return (
     <SafeAreaView>
-      <View style={defaultStyles.defScreen}>
-        <View style={[styles.searchAndFilterPanel]}>
-          <View style={[styles.searchHeader]}>
-            <View style={styles.searchBar}>
-              <Searchbar
-                placeholder="Search"
-                onChangeText={onChangeSearch}
-                value={searchQuery}
-              />
-            </View>
-            <TouchableOpacity style={[styles.filterPanel, defaultStyles.shadowMedium]} onPress={() => updateResult([])}>
-              <FilterSvg/>
-            </TouchableOpacity>
-          </View>
-          {searchResult.length !== 0 ?
-            <View style={[styles.sortAndDisplay]}>
-              <TouchableOpacity style={[styles.displayPanel, defaultStyles.shadowMedium]} onPress={setDisplayType}>
-                <View style={[styles.displayPanelIcon]}>
-                  <DogSvg/>
-                </View>
-                <View style={[styles.displayPanelTextContainer]}>
-                  <Text style={[styles.displayPanelText]}>Rute</Text>
-                </View>
-              </TouchableOpacity>
-              <TouchableOpacity style={[styles.sortPanel, defaultStyles.shadowMedium]}>
-                <View style={[styles.displayPanelIcon]}>
-                  <DogSvg/>
-                </View>
-                <View style={[styles.displayPanelTextContainer]}>
-                  <Text style={[styles.displayPanelText]}>I nærheten</Text>
-                </View>
-              </TouchableOpacity>
-            </View>: null}
-        </View>
-        {searchResult.length === 0 ?
-          // Blank search screen
-            <ScrollView >
-              <View style={[emptyStyle.container]}>
-                <Image source={require('../assets/gif/search-dog.gif')} style={emptyStyle.picture}/>
-                <View style={[emptyStyle.prevSearchPanel]}>
-                  <View style={[defaultStyles.sectionHeader]}>
-                    <Text style={[defaultStyles.sectionHeaderText]}>Tidligere søk</Text>
-                  </View>
-                  <View>
-                    {prevSearch.map((search, index) => (
-                      <View key={index} style={[emptyStyle.prevSearch]}>
-                        <SearchSvg/>
-                        <Text style={[emptyStyle.prevSearchText]}>{search}</Text>
-                      </View>
-                      ))}
-                  </View>
-                </View>
-              </View>
-            </ScrollView>:
-          postDisplay(displayType, searchResult)
-        }
+      <View style={defaultStyles.absScreenPart}>
+        <SearchAndFilterPanel
+          displayType={displayType}
+          changeDisplayType={changeDisplayType}
+          filter={filter}
+          changeFilter={changeFilter}
+          searchQuery={searchQuery}
+          searchResult={searchResult}
+          setSearchQuery={setSearchQuery}
+          updateResult={updateResult}
+        />
       </View>
+      <ScrollView style={displayType === 4 ? {marginTop:0}:{marginTop:200}}>
+       <View style={defaultStyles.defScreen}>
+        <View style={{overflow:'visible'}}>
+          {searchResult.length === 0 && searchQuery !== '' ?
+            <NoPostSection />:
+            (searchResult.length === 0 ?
+            <PrevSearchSection prevSearch={prevSearch}/>:
+            postDisplay(displayType, searchResult))
+          }
+        </View>
+       </View>
+      </ScrollView>
     </SafeAreaView>
   );
 }
@@ -233,30 +211,15 @@ const styles = StyleSheet.create({
   sortPanelIcon:{
     height: '100%',
     aspectRatio: 1
-  }
-});
-
-const emptyStyle = StyleSheet.create({
-  container: {
-    width: '100%',
-    borderWidth: 1
   },
-  picture:{
-    width: '100%',
-    height: '30%'
+  mapContainer: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
-  prevSearchPanel:{
-    display: 'flex'
+  map: {
+    width: screenWidth,
+    height: screenHeight,
   },
-  prevSearch:{
-    width: '100%',
-    height: 50,
-    flexDirection: 'row',
-    alignItems: 'center'
-  },
-  prevSearchText:{
-    marginLeft: '3%',
-    fontSize: 20,
-    color:'#767676'
-  }
 });

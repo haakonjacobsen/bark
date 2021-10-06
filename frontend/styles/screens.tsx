@@ -16,6 +16,13 @@ const defaultStyles = StyleSheet.create({
     width: '100%',
     height: '100%',
   },
+  absScreenPart:{
+    zIndex: 100,
+    display:'flex',
+    paddingLeft: 20,
+    paddingRight: 20,
+    alignItems: 'center',
+  },
   home:{
   },
   shadowMild:{

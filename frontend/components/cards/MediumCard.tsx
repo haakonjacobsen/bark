@@ -5,14 +5,7 @@ import Price from "../elements/Price";
 import Age from "../elements/Age";
 import DogLabel from "../elements/DogLabel";
 const screenWidth = Dimensions.get('window').width;
-
-type PostProps = {
-  title: string;
-  picture: string[];
-  price: number;
-  dogAge: number;
-  dogBreed: string;
-}
+import {PostProps} from "../../types/PostProps";
 
 export default function MediumCard(props:{key:number, post:PostProps}) {
   return (

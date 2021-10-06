@@ -17,7 +17,9 @@ export default function BigCard(props:{key:number, post:PostProps, roundCorners:
           <View style={styles.infoBar}>
             <Price price={props.post.price}/>
             <Age age={props.post.dogAge}/>
-            <DogLabel breed={props.post.dogBreed} inColumn={true}/>
+            <View style={styles.dogLabel}>
+              <DogLabel breed={props.post.dogBreed} inColumn={true}/>
+            </View>
           </View>
         </View>
       </View>
@@ -53,5 +55,8 @@ const styles = StyleSheet.create({
     height: '22%',
     display: "flex",
     flexDirection: "row"
+  },
+  dogLabel:{
+    flex: 1.75
   }
 });

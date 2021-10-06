@@ -2,21 +2,26 @@ import { StyleSheet, Text, View} from "react-native";
 import React from "react";
 
 
-export default function Age(props: { price: number; }) {
+export default function Age(props: { price: number; shadow:boolean}) {
   return (
-  <View style={[styles.price, styles.infoItem]}>
+  <View style={props.shadow ?[styles.price, styles.shadow]:styles.price}>
     <View style={[styles.infoHeader, styles.priceHeader]}>
       <Text>Price</Text>
     </View>
     <View style={styles.priceInfo}>
-      <Text>{props.price}</Text>
+      <Text>{props.price.toLocaleString('en-US').replace(',', ' ')}</Text>
     </View>
   </View>
   );
 }
 
+Age.defaultProps = {
+  price: 0,
+  shadow:false
+}
+
 const styles = StyleSheet.create({
-  infoItem:{
+  shadow:{
     shadowColor: '#000',
     shadowOffset: { width: -2, height: 0 },
     shadowOpacity: 0.20,
