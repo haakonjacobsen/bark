@@ -1,9 +1,11 @@
+const Post = require("./models/Post");
+
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 require('dotenv/config');
-const PORT = process.env.PORT || 5000;
+const PORT =  5000;
 
 //Import Routes
 const postRoute = require('./routes/posts');
@@ -26,3 +28,5 @@ mongoose.connect(process.env.DB_CONNECTION, () =>
 );
 
 app.listen(PORT, () => console.log(`API available at localhost:${PORT}`));
+
+console.log(Post.find().sort({'dogAge': 1}))

@@ -11,6 +11,7 @@ const defaultStyles = StyleSheet.create({
     overflow: 'visible'
   },
   fullScreen: {
+
     display: 'flex',
     backgroundColor: '#FFFFFF',
     width: '100%',

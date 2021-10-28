@@ -1,7 +1,8 @@
 export type PostProps = {
-  title: string;
-  picture: string[];
+  dogBreed: string;
   price: number;
   dogAge: string;
-  dogBreed: string;
+  postAge: Date;
+  description: string;
+  picture: string[];
 }

@@ -8,6 +8,7 @@
     "eject": "expo eject"
   },
   "dependencies": {
+    "@apollo/client": "^3.4.16",
     "@expo-google-fonts/dev": "^0.2.0",
     "@expo-google-fonts/inter": "^0.2.0",
     "@fontsource/oleo-script": "^4.5.0",
@@ -17,6 +18,7 @@
     "expo-app-loading": "^1.1.2",
     "expo-font": "^9.2.1",
     "expo-status-bar": "~1.0.4",
+    "graphql": "^15.6.1",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-native": "https://github.com/expo/react-native/archive/sdk-42.0.0.tar.gz",

@@ -13,6 +13,34 @@ import MapView from 'react-native-maps';
 const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
 
+const ALL_POST_QUERY = `
+{
+  getAllPost(first:2) {
+    price
+    dogBreed
+    id
+    dogAge
+    description
+  }
+}
+`
+
+
+function createSearchPostQuery(queryText: string) {
+  return `
+{
+  getSearchPost(input: {searchKeyword: "${queryText}"}) {
+    id
+    price
+    dogBreed
+    dogAge
+    postDate
+    description
+  }
+}
+`
+}
+
 export default function SearchScreen() {
   // 1 = bigCard, 2 = mediumCard, 3 = listView, 4 = mapView
   const [displayType, changeDisplayType] = useState(1);
@@ -23,13 +51,26 @@ export default function SearchScreen() {
     'Retriver', 'Flatcouated Retriver', 'Stuff', 'Things', 'More Stuff', 'Retriver', 'Flatcouated Retriver', 'Stuff', 'Things', 'More Stuff']);
 
   useEffect(() => {
-    getPostsQuery(searchQuery, filter);
+    //getPostsQuery(searchQuery, filter);
+    getPostData(searchQuery, filter);
     console.log();
   }, [filter, searchQuery]);
 
 
   const onChangeSearch = (query: React.SetStateAction<string>) => setSearchQuery(query);
 
+  async function getPostData(query:string, filter:Object) {
+    try{
+      const postData = await fetch("http://localhost:4000/graphql", {
+        method: "POST",
+        headers: {'Content-Type': 'application/json', 'Accept': 'application/json',},
+        body: JSON.stringify({query: createSearchPostQuery(query)})
+      }).then(res => res.json()).then(data => {return data.data.getSearchPost});
+      updateResult(postData);
+    }catch(err){
+      console.log(err)
+    }
+  }
 
   function getPostsQuery(query:string, filter:Object) {
     try{

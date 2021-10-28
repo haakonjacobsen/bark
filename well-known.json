@@ -1,0 +1,60 @@
+{
+  "types": {
+    "Dog": {
+      "breedName": "string",
+      "searchCount": "number",
+      "popularity": "number",
+      "info": {
+        "historyInfo": "string",
+        "abilitiesInfo": "string",
+        "sizeInfo": "string",
+        "groomingInfo": "string"
+      },
+      "stats": {
+        "activityLevel": "number",
+        "size": "number",
+        "cooperative": "number",
+        "grooming": "number"
+      },
+      "questions": {
+        "livingSituation": 0,
+        "kids": false,
+        "experience": 1
+      }
+    },
+    "Post": {
+      "user": "User",
+      "dogBreed": "Dog",
+      "price": "number",
+      "description": "string",
+      "dogAge": "Date",
+      "location": {
+        "type": "Point",
+        "coordinates": [-73.856077, 40.848447]
+      }
+    },
+    "User": {
+      "firstname": "string",
+      "lastname": "string",
+      "age": "number",
+      "email": "string",
+      "phoneNr": "number",
+      "verifiedBreeder": "boolean",
+      "pictures": [""],
+      "dogBreeds": ["Dog", "Dog"],
+      "prevSearch": ["Search"]
+    },
+    "Search": {
+      "searchWord": "string",
+      "dateOfSearch": "Date"
+    },
+    "Filter": {
+      "showMyFavorites": "boolean",
+      "onlyPuppies": "boolean",
+      "verifiedBreeders": "boolean",
+      "price": [0,100000],
+      "breeds": ["Dog"],
+      "area": ["GeoJSONLocations"]
+    }
+  }
+}
