@@ -1,35 +1,25 @@
 import React, {useEffect, useState} from 'react';
-import {ScrollView, Dimensions, SafeAreaView, StyleSheet, View, Text, Image} from 'react-native';
+import {ScrollView, Dimensions, SafeAreaView, StyleSheet, View, Button} from 'react-native';
 import defaultStyles from '../styles/screens';
 import BigCard from "../components/cards/BigCard";
 import MediumCard from "../components/cards/MediumCard";
 import ListCard from "../components/cards/ListCard";
-import {PostProps} from "../types/PostProps";
+import {PostProps, FilterState} from "../types/PostProps";
 import PrevSearchSection from "../components/sections/PrevSearchSection";
 import SearchAndFilterPanel from "../components/panels/SearchAndFilterPanel";
 import NoPostSection from "../components/sections/NoPostSection";
 import MapView from 'react-native-maps';
+import {useDispatch, useSelector} from "react-redux";
+import { RootState } from '../redux/store';
+import {addSearchResults, resetSearchResults, setSearchQuery} from "../redux/features/searchSlice";
 
 const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
 
-const ALL_POST_QUERY = `
-{
-  getAllPost(first:2) {
-    price
-    dogBreed
-    id
-    dogAge
-    description
-  }
-}
-`
-
-
-function createSearchPostQuery(queryText: string) {
+function createSearchPostQuery(queryText: string, limit: number, offset: number) {
   return `
 {
-  getSearchPost(input: {searchKeyword: "${queryText}"}) {
+  getSearchPost(searchKeyword: "${queryText}", limit: ${limit}, offset: ${offset}) {
     id
     price
     dogBreed
@@ -42,88 +32,56 @@ function createSearchPostQuery(queryText: string) {
 }
 
 export default function SearchScreen() {
-  // 1 = bigCard, 2 = mediumCard, 3 = listView, 4 = mapView
-  const [displayType, changeDisplayType] = useState(1);
-  const [searchQuery, setSearchQuery] = useState('');
-  const [filter, changeFilter] = useState({});
-  const [searchResult, updateResult] = useState<PostProps[]>([]);
+  const filter = useSelector((state:RootState) => state.filter);
+  const search = useSelector((state:RootState) => state.search);
   const [prevSearch, updatePrevSearch] = useState<string[]>([
     'Retriver', 'Flatcouated Retriver', 'Stuff', 'Things', 'More Stuff', 'Retriver', 'Flatcouated Retriver', 'Stuff', 'Things', 'More Stuff']);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    //getPostsQuery(searchQuery, filter);
-    getPostData(searchQuery, filter);
-    console.log();
-  }, [filter, searchQuery]);
-
-
-  const onChangeSearch = (query: React.SetStateAction<string>) => setSearchQuery(query);
+    dispatch(resetSearchResults());
+  }, [filter, search.searchQuery]);
 
   async function getPostData(query:string, filter:Object) {
     try{
       const postData = await fetch("http://localhost:4000/graphql", {
         method: "POST",
         headers: {'Content-Type': 'application/json', 'Accept': 'application/json',},
-        body: JSON.stringify({query: createSearchPostQuery(query)})
-      }).then(res => res.json()).then(data => {return data.data.getSearchPost});
-      updateResult(postData);
-    }catch(err){
+        body: JSON.stringify({query: createSearchPostQuery(query, 1, search.searchResults.length)})
+      }).then(res => res.json());
+      dispatch(addSearchResults(postData.data.getSearchPost));
+      //updateResult(oldArray => [...oldArray, ...postData.data.getSearchPost]);
+    } catch(err){
       console.log(err)
     }
   }
 
-  function getPostsQuery(query:string, filter:Object) {
-    try{
-      if (query === '') {
-        fetch('http://192.168.0.15:5000/posts', {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
-          }
-        })
-          .then(response => response.json())
-          .then(json => updateResult(json))
-      } else {
-        fetch(`http://192.168.0.15:5000/posts/search/${query}`, {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
-          }
-        })
-          .then(response => response.json())
-          .then(json => updateResult(json))
-      }
-    } catch (err){
-      console.log('ERROR'+ err)
-    }
-  }
-
   function postDisplay(type:number, postData:PostProps[]){
-    if (type === 1){
+    if (search.displayType === 1){
       return(
         <ScrollView>
-          {searchResult.map((post, index) =>(
+          {postData.map((post, index) =>(
             <BigCard key={index} post={post} roundCorners={true}/>
           ))}
         </ScrollView>
       );
     }
-    else if(type === 2){
+    else if(search.displayType === 2){
       return(
       <ScrollView>
         <View style={styles.gridView}>
-          {searchResult.map((post, index) =>(
+          {postData.map((post, index) =>(
             <MediumCard key={index} post={post}/>
           ))}
         </View>
       </ScrollView>
       )
     }
-    else if(type === 3) {
+    else if(search.displayType === 3) {
       return (
         <ScrollView>
           <View style={styles.gridView}>
-            {searchResult.map((post, index) => (
+            {postData.map((post, index) => (
               <ListCard key={index} post={post}/>
             ))}
           </View>
@@ -140,26 +98,18 @@ export default function SearchScreen() {
   return (
     <SafeAreaView>
       <View style={defaultStyles.absScreenPart}>
-        <SearchAndFilterPanel
-          displayType={displayType}
-          changeDisplayType={changeDisplayType}
-          filter={filter}
-          changeFilter={changeFilter}
-          searchQuery={searchQuery}
-          searchResult={searchResult}
-          setSearchQuery={setSearchQuery}
-          updateResult={updateResult}
-        />
+        <SearchAndFilterPanel/>
       </View>
-      <ScrollView style={displayType === 4 ? {marginTop:0}:{marginTop:200}}>
+      <ScrollView style={search.displayType === 4 ? {marginTop:0}:{marginTop:200}}>
        <View style={defaultStyles.defScreen}>
         <View style={{overflow:'visible'}}>
-          {searchResult.length === 0 && searchQuery !== '' ?
+          {search.searchResults.length === 0 && search.searchQuery !== '' ?
             <NoPostSection />:
-            (searchResult.length === 0 ?
+            (search.searchResults.length === 0 ?
             <PrevSearchSection prevSearch={prevSearch}/>:
-            postDisplay(displayType, searchResult))
+            postDisplay(search.displayType, search.searchResults))
           }
+          <Button title={"LoadMore"} onPress={() => getPostData(search.searchQuery, filter)}/>
         </View>
        </View>
       </ScrollView>

@@ -6,37 +6,20 @@ import {Searchbar} from "react-native-paper";
 import defaultStyles from "../../styles/screens";
 import FilterSvg from "../svg/FilterSvg";
 import {PostProps} from "../../types/PostProps";
+import {useDispatch, useSelector} from "react-redux";
+import {toggleCertifiedBreeders} from "../../redux/features/filterSlice";
+import {setDisplayType, setSearchQuery} from "../../redux/features/searchSlice";
+import {RootState} from "../../redux/store";
 
 const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
 
-export default function SearchAndFilterPanel(props:{
-  displayType:number,
-  changeDisplayType:React.Dispatch<React.SetStateAction<number>>,
-  filter: {},
-  changeFilter:React.Dispatch<React.SetStateAction<{}>>,
-  searchQuery:string,
-  searchResult:PostProps[],
-  setSearchQuery:React.Dispatch<React.SetStateAction<string>>,
-  updateResult: React.Dispatch<React.SetStateAction<PostProps[]>>
-  }) {
+export default function SearchAndFilterPanel() {
+  //Redux
+  const search = useSelector((state:RootState) => state.search);
+  const dispatch = useDispatch();
+  const onChangeSearch = (query: React.SetStateAction<string>) => {dispatch(setSearchQuery(query)); console.log(search.searchQuery)};
 
-  const onChangeSearch = (query: React.SetStateAction<string>) => props.setSearchQuery(query);
-
-  function setDisplayType(){
-    console.log(props.displayType);
-    if(props.displayType === 1){
-      props.changeDisplayType(2)
-    }
-    else if (props.displayType === 2) {
-      props.changeDisplayType(3)
-    }
-    else if (props.displayType === 3) {
-      props.changeDisplayType(4)
-    } else {
-      props.changeDisplayType(1)
-    }
-  }
 
   return (
     <View style={[styles.searchAndFilterPanel]}>
@@ -45,16 +28,16 @@ export default function SearchAndFilterPanel(props:{
           <Searchbar
             placeholder="Search"
             onChangeText={onChangeSearch}
-            value={props.searchQuery}
+            value={search.searchQuery}
           />
         </View>
-        <TouchableOpacity style={[styles.filterPanel, defaultStyles.shadowMedium]} onPress={() => props.updateResult([])}>
+        <TouchableOpacity style={[styles.filterPanel, defaultStyles.shadowMedium]} onPress={() => dispatch(toggleCertifiedBreeders())}>
           <FilterSvg/>
         </TouchableOpacity>
       </View>
-      {props.searchResult.length !== 0 ?
+      {search.searchResults.length !== 0 ?
         <View style={[styles.sortAndDisplay]}>
-          <TouchableOpacity style={[styles.displayPanel, defaultStyles.shadowMedium]} onPress={setDisplayType}>
+          <TouchableOpacity style={[styles.displayPanel, defaultStyles.shadowMedium]} onPress={() => dispatch(setDisplayType())}>
             <View style={[styles.displayPanelIcon]}>
               <DogSvg/>
             </View>
