@@ -12,14 +12,30 @@ const typeDefs = gql`
         postDate: Date
         description: String
     }
+    
+    type User {
+        id: ID
+        firstname: String
+        lastname: String
+        password: String
+        birthday: Date
+        email: String
+        verifiedBreeder: Boolean
+        phoneNr: String
+        dogBreeds: [String]
+        picture: [String]
+    }
+    
     input SearchInput {
         searchKeyword: String
+        limit: Int
+        offset: Int
     }
     
     type Query {
         hello: String
         getAllPost: [Post]
-        getSearchPost(input: SearchInput): [Post]
+        getSearchPost(searchKeyword: String, limit: Int, offset: Int): [Post]
     }
     
     input PostInput {
@@ -28,8 +44,13 @@ const typeDefs = gql`
         description: String
     }
     
+    input UserInput {
+        firstname: String
+    }
+    
     type Mutation {
         createPost(post: PostInput): Post
+        createUser(user: UserInput): User
     }
 `;
 

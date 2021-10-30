@@ -1,8 +1,9 @@
-const express = require("express")
-const {ApolloServer, gql} = require('apollo-server-express')
-const typeDefs = require('./typeDefs')
-const resolvers = require('./resolvers')
+const express = require("express");
+const {ApolloServer, gql} = require('apollo-server-express');
+const typeDefs = require('./typeDefs');
+const resolvers = require('./resolvers');
 const mongoose = require('mongoose');
+const Post = require('./models/Post.model');
 
 async function startServer() {
     try{
@@ -24,7 +25,7 @@ async function startServer() {
             useUnifiedTopology: true,
             useNewUrlParser: true
         });
-
+        
         console.log('Connected to MongoDB')
 
         app.listen(4000, () => console.log("Server is running on port 4000"));
