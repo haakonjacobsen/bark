@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Dimensions, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import Svg, { Path } from "react-native-svg";
 import DogSvg from "../svg/DogSvg"
@@ -10,6 +10,8 @@ import {useDispatch, useSelector} from "react-redux";
 import {toggleCertifiedBreeders} from "../../redux/features/filterSlice";
 import {setDisplayType, setSearchQuery} from "../../redux/features/searchSlice";
 import {RootState} from "../../redux/store";
+import Filter from "./filter";
+import { Switch } from 'react-native-paper';
 
 const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
@@ -18,7 +20,7 @@ export default function SearchAndFilterPanel() {
   //Redux
   const search = useSelector((state:RootState) => state.search);
   const dispatch = useDispatch();
-  const onChangeSearch = (query: React.SetStateAction<string>) => {dispatch(setSearchQuery(query)); console.log(search.searchQuery)};
+  const onChangeSearch = (query: React.SetStateAction<string>) => {dispatch(setSearchQuery(query))};
 
 
   return (
@@ -31,9 +33,7 @@ export default function SearchAndFilterPanel() {
             value={search.searchQuery}
           />
         </View>
-        <TouchableOpacity style={[styles.filterPanel, defaultStyles.shadowMedium]} onPress={() => dispatch(toggleCertifiedBreeders())}>
-          <FilterSvg/>
-        </TouchableOpacity>
+        <Filter/>
       </View>
       {search.searchResults.length !== 0 ?
         <View style={[styles.sortAndDisplay]}>

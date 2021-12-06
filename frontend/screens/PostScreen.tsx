@@ -6,26 +6,9 @@ import Age from "../components/elements/Age";
 import DogLabel from "../components/elements/DogLabel";
 import BigCard from "../components/cards/BigCard";
 
-type PostProps = {
-  title: string;
-  //post_age: bigint;
-  picture: string[];
-  price: number;
-  dogAge: number;
-  dogBreed: string;
-}
-const mockProps = {
-  title: 'Hund selges',
-  picture: ['../../assets/mock/picture/post-image.jpg'],
-  price: 3500,
-  dogAge: 340,
-  dogBreed: 'Golden Retriver'
-}
-
 export default function PostScreen(props:{price:number; breed:string; age:number;}) {
   return (
     <ScrollView style={defaultStyles.fullScreen}>
-      <BigCard post={mockProps} roundCorners={false}/>
     </ScrollView>
   );
 }

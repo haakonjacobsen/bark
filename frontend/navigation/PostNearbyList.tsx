@@ -2,14 +2,9 @@ import React from 'react';
 import {ScrollView, StyleSheet, View, Text} from "react-native";
 import MediumCard from "../components/cards/MediumCard";
 import defaultStyles from "../styles/screens";
-
-const mockProps = {
-  title: 'Hund selges',
-  picture: ['../../assets/mock/picture/post-image.jpg'],
-  price: 3500,
-  dogAge: 340,
-  dogBreed: 'Golden Retriver'
-}
+import {PostProps} from "../types/PostProps";
+import {MockPostData} from "../assets/mock/data/MockPostData";
+import BigCard from "../components/cards/BigCard";
 
 function PostNearbyList(props:{title:string}) {
   return (
@@ -18,24 +13,11 @@ function PostNearbyList(props:{title:string}) {
         <Text style={defaultStyles.sectionHeaderText}>{props.title}</Text>
       </View>
       <ScrollView style={styles.listItems} horizontal={true} showsHorizontalScrollIndicator={false}>
-        <View style={{marginRight:20}}>
-          <MediumCard post={mockProps} />
-        </View>
-        <View style={{marginRight:20}}>
-          <MediumCard post={mockProps} />
-        </View>
-        <View style={{marginRight:20}}>
-          <MediumCard post={mockProps} />
-        </View>
-        <View style={{marginRight:20}}>
-          <MediumCard post={mockProps} />
-        </View>
-        <View style={{marginRight:20}}>
-          <MediumCard post={mockProps} />
-        </View>
-        <View style={{marginRight:20}}>
-          <MediumCard post={mockProps} />
-        </View>
+        {MockPostData.map((post, index) =>(
+            <View style={{marginRight:20}}>
+              <MediumCard key={index} post={post} />
+            </View>
+        ))}
       </ScrollView>
     </View>
   );

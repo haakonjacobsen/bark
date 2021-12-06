@@ -2,7 +2,7 @@
 export type PostProps = {
   dogBreed: string;
   price: number;
-  dogAge: string;
+  dogAge: Date;
   postAge: Date;
   description: string;
   picture: string[];

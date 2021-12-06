@@ -35,7 +35,8 @@ export default function SearchScreen() {
   const filter = useSelector((state:RootState) => state.filter);
   const search = useSelector((state:RootState) => state.search);
   const [prevSearch, updatePrevSearch] = useState<string[]>([
-    'Retriver', 'Flatcouated Retriver', 'Stuff', 'Things', 'More Stuff', 'Retriver', 'Flatcouated Retriver', 'Stuff', 'Things', 'More Stuff']);
+    'Retriver', 'Flatcouated Retriver', 'Stuff', 'Things', 'More Stuff',
+    'Retriver', 'Flatcouated Retriver', 'Stuff', 'Things', 'More Stuff']);
   const dispatch = useDispatch();
 
   useEffect(() => {

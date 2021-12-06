@@ -2,9 +2,9 @@ import { StyleSheet, Text, View} from "react-native";
 import React from "react";
 
 
-export default function Age(props: { age: string; }) {
+export default function Age(props: { age: Date; }) {
 
-  function getAge(date:string){
+  function getAge(date:Date){
     const newAge = new Date(date);
     const today = new Date();
     const diffInTime = today.getTime() - newAge.getTime();
