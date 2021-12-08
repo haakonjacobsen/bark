@@ -12,17 +12,20 @@ import {setDisplayType, setSearchQuery} from "../../redux/features/searchSlice";
 import {RootState} from "../../redux/store";
 import Filter from "./filter";
 import { Switch } from 'react-native-paper';
-
+import FilterAddedIcon from "../elements/FilterAddedIcon";
+import {InitialFilter} from "../../types/PostProps"
+import FiltersAddedPanel from "./FiltersAddedPanel";
 const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
 
 export default function SearchAndFilterPanel() {
   //Redux
   const search = useSelector((state:RootState) => state.search);
+  const filter = useSelector((state:RootState) => state.filter);
   const dispatch = useDispatch();
   const onChangeSearch = (query: React.SetStateAction<string>) => {dispatch(setSearchQuery(query))};
 
-
+  // @ts-ignore
   return (
     <View style={[styles.searchAndFilterPanel]}>
       <View style={[styles.searchHeader]}>
@@ -35,6 +38,7 @@ export default function SearchAndFilterPanel() {
         </View>
         <Filter/>
       </View>
+      {true?<FiltersAddedPanel filter={filter}/>:null}
       {search.searchResults.length !== 0 ?
         <View style={[styles.sortAndDisplay]}>
           <TouchableOpacity style={[styles.displayPanel, defaultStyles.shadowMedium]} onPress={() => dispatch(setDisplayType())}>
@@ -139,5 +143,5 @@ const styles = StyleSheet.create({
   sortPanelIcon:{
     height: '100%',
     aspectRatio: 1
-  }
+  },
 });

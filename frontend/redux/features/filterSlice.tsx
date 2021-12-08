@@ -1,14 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import {FilterState} from "../../types/PostProps";
+import {InitialFilter} from "../../types/PostProps";
 
-const initialState: FilterState = {
-  myFavorites: false,
-  priceInterval:[0,1000000],
-  onlyPuppies: false,
-  certifiedBreeders: false,
-  dogBreeds:[],
-  //area: GeoJSON
-}
+const initialState: FilterState = InitialFilter;
 
 export const filterSlice = createSlice({
   name: 'filter',
@@ -23,10 +17,13 @@ export const filterSlice = createSlice({
     toggleCertifiedBreeders: (state) => {
       state.certifiedBreeders = !state.certifiedBreeders;
     },
+    updatePriceInterval: (state, action) => {
+      state.priceInterval = action.payload;
+    }
   },
 })
 
 // Action creators are generated for each case reducer function
-export const { toggleFavorites, togglePuppies, toggleCertifiedBreeders } = filterSlice.actions
+export const { toggleFavorites, togglePuppies, toggleCertifiedBreeders, updatePriceInterval} = filterSlice.actions
 
 export default filterSlice.reducer

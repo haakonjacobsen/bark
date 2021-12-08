@@ -24,9 +24,9 @@ export type SearchState = {
 }
 
 // Standard objects and values, move to Redux later
-export const startFilter = {
+export const InitialFilter:FilterState = {
   myFavorites: false,
-  priceInterval:[0,1000000],
+  priceInterval:[0,26000],
   onlyPuppies: false,
   certifiedBreeders: false,
   dogBreeds:[],
