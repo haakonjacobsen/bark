@@ -19,11 +19,14 @@ export const filterSlice = createSlice({
     },
     updatePriceInterval: (state, action) => {
       state.priceInterval = action.payload;
+    },
+    resetDogBreeds: (state) => {
+      state.dogBreeds = [];
     }
   },
 })
 
 // Action creators are generated for each case reducer function
-export const { toggleFavorites, togglePuppies, toggleCertifiedBreeders, updatePriceInterval} = filterSlice.actions
+export const { toggleFavorites, togglePuppies, toggleCertifiedBreeders, updatePriceInterval, resetDogBreeds} = filterSlice.actions
 
 export default filterSlice.reducer

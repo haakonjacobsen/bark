@@ -1,5 +1,14 @@
 import React, {useEffect, useState} from 'react';
-import {ScrollView, Dimensions, SafeAreaView, StyleSheet, View, Button} from 'react-native';
+import {
+  ScrollView,
+  Dimensions,
+  SafeAreaView,
+  StyleSheet,
+  View,
+  Button,
+  SafeAreaViewComponent,
+  FlatList
+} from 'react-native';
 import defaultStyles from '../styles/screens';
 import BigCard from "../components/cards/BigCard";
 import MediumCard from "../components/cards/MediumCard";
@@ -8,7 +17,7 @@ import {PostProps, FilterState} from "../types/PostProps";
 import PrevSearchSection from "../components/sections/PrevSearchSection";
 import SearchAndFilterPanel from "../components/panels/SearchAndFilterPanel";
 import NoPostSection from "../components/sections/NoPostSection";
-import MapView from 'react-native-maps';
+import MapView, {Marker} from 'react-native-maps';
 import {useDispatch, useSelector} from "react-redux";
 import { RootState } from '../redux/store';
 import {addSearchResults, resetSearchResults, setSearchQuery} from "../redux/features/searchSlice";
@@ -36,16 +45,18 @@ export default function SearchScreen() {
   const search = useSelector((state:RootState) => state.search);
   const [prevSearch, updatePrevSearch] = useState<string[]>([
     'Retriver', 'Flatcouated Retriver', 'Stuff', 'Things', 'More Stuff',
+    'Retriver', 'Flatcouated Retriver', 'Stuff', 'Things', 'More Stuff',
+    'Retriver', 'Flatcouated Retriver', 'Stuff', 'Things', 'More Stuff',
     'Retriver', 'Flatcouated Retriver', 'Stuff', 'Things', 'More Stuff']);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(resetSearchResults());
+    getPostData(search.searchQuery, filter);
   }, [filter, search.searchQuery]);
 
   async function getPostData(query:string, filter:Object) {
     try{
-      const postData = await fetch("http://localhost:4000/graphql", {
+      const postData = await fetch("http://192.168.0.12:4000/graphql", {
         method: "POST",
         headers: {'Content-Type': 'application/json', 'Accept': 'application/json',},
         body: JSON.stringify({query: createSearchPostQuery(query, 1, search.searchResults.length)})
@@ -60,66 +71,81 @@ export default function SearchScreen() {
   function postDisplay(type:number, postData:PostProps[]){
     if (search.displayType === 1){
       return(
-        <ScrollView>
+        <View>
           {postData.map((post, index) =>(
             <BigCard key={index} post={post} roundCorners={true}/>
           ))}
-        </ScrollView>
+        </View>
       );
     }
     else if(search.displayType === 2){
       return(
-      <ScrollView>
         <View style={styles.gridView}>
           {postData.map((post, index) =>(
             <MediumCard key={index} post={post}/>
           ))}
         </View>
-      </ScrollView>
       )
     }
     else if(search.displayType === 3) {
       return (
-        <ScrollView>
-          <View style={styles.gridView}>
-            {postData.map((post, index) => (
-              <ListCard key={index} post={post}/>
-            ))}
-          </View>
-        </ScrollView>
+        <View style={styles.gridView}>
+          {postData.map((post, index) => (
+            <ListCard key={index} post={post}/>
+          ))}
+        </View>
       )
     }
-    else (
-      <View style={styles.mapContainer}>
-        <MapView style={styles.map} />
-      </View>
-    );
   }
 
   return (
-    <SafeAreaView>
-      <View style={defaultStyles.absScreenPart}>
-        <SearchAndFilterPanel/>
+    <View>
+      <SearchAndFilterPanel/>
+      <View style={styles.searchScreen}>
+      {search.displayType === 4 ?
+        <View style={styles.mapContainer}>
+          <MapView
+            style={styles.map}
+            region={{
+              latitude: 200.5200066,
+              longitude: 200.404954,
+              latitudeDelta: 0.005,
+              longitudeDelta: 0.005
+            }}>
+            <Marker coordinate = {{latitude: 63.427635,longitude: 10.416708}}
+                    pinColor = {"purple"} // any color
+                    title={"title"}
+                    description={"description"}/>
+            <Marker coordinate = {{latitude: 63.422941,longitude: 10.403691}}
+                    pinColor = {"purple"} // any color
+                    title={"Dog"}
+                    description={"Stuff"}/>
+          </MapView>
+          </View>:
+          <View style={{flexGrow: 1}}>
+            <ScrollView style={[{height: 1, paddingHorizontal: 20}]}>
+              {search.searchResults.length === 0 && search.searchQuery !== '' ?
+                <NoPostSection/> :
+                (search.searchResults.length === 0 ?
+                  <PrevSearchSection prevSearch={prevSearch}/> :
+                  postDisplay(search.displayType, search.searchResults)
+                )
+              }
+              <Button title={"LoadMore"} onPress={() => getPostData(search.searchQuery, filter)}/>
+            </ScrollView>
+          </View>
+        }
       </View>
-      <ScrollView style={search.displayType === 4 ? {marginTop:0}:{marginTop:200}}>
-       <View style={defaultStyles.defScreen}>
-        <View style={{overflow:'visible'}}>
-          {search.searchResults.length === 0 && search.searchQuery !== '' ?
-            <NoPostSection />:
-            (search.searchResults.length === 0 ?
-            <PrevSearchSection prevSearch={prevSearch}/>:
-            postDisplay(search.displayType, search.searchResults))
-          }
-          <Button title={"LoadMore"} onPress={() => getPostData(search.searchQuery, filter)}/>
-        </View>
-       </View>
-      </ScrollView>
-    </SafeAreaView>
+
+    </View>
   );
 }
 
 
 const styles = StyleSheet.create({
+  searchScreen:{
+    height: '100%',
+  },
   gridView: {
     display: 'flex',
     flexDirection:'row',
@@ -205,13 +231,19 @@ const styles = StyleSheet.create({
     aspectRatio: 1
   },
   mapContainer: {
-    flex: 1,
-    backgroundColor: '#fff',
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    justifyContent: 'flex-end',
     alignItems: 'center',
-    justifyContent: 'center',
   },
   map: {
-    width: screenWidth,
-    height: screenHeight,
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
   },
 });

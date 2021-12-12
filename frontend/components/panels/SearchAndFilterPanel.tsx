@@ -1,62 +1,76 @@
 import React, {useState} from 'react';
 import {Dimensions, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-import Svg, { Path } from "react-native-svg";
 import DogSvg from "../svg/DogSvg"
 import {Searchbar} from "react-native-paper";
 import defaultStyles from "../../styles/screens";
-import FilterSvg from "../svg/FilterSvg";
-import {PostProps} from "../../types/PostProps";
 import {useDispatch, useSelector} from "react-redux";
-import {toggleCertifiedBreeders} from "../../redux/features/filterSlice";
 import {setDisplayType, setSearchQuery} from "../../redux/features/searchSlice";
 import {RootState} from "../../redux/store";
-import Filter from "./filter";
-import { Switch } from 'react-native-paper';
-import FilterAddedIcon from "../elements/FilterAddedIcon";
-import {InitialFilter} from "../../types/PostProps"
+import Filter from "./Filter";
 import FiltersAddedPanel from "./FiltersAddedPanel";
+import PostSvg from "../svg/PostSvg";
+import GridSvg from "../svg/GridSvg";
+import ListSvg from "../svg/ListSvg";
+import MapSvg from "../svg/MapSvg";
+
 const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
 
 export default function SearchAndFilterPanel() {
-  //Redux
+  const [showFilter, toggleFilter] = useState(false);
+
   const search = useSelector((state:RootState) => state.search);
   const filter = useSelector((state:RootState) => state.filter);
   const dispatch = useDispatch();
   const onChangeSearch = (query: React.SetStateAction<string>) => {dispatch(setSearchQuery(query))};
 
-  // @ts-ignore
+  const displayType:any = {
+    1: 'Post',
+    2: 'Grid',
+    3: 'List',
+    4: 'Map'
+  }
+
+  function getIconFilter(displayType:number){
+    if(displayType === 1) return <PostSvg/>
+    else if (displayType === 2) return <GridSvg/>
+    else if (displayType === 3) return <ListSvg/>
+    else if (displayType === 4) return <MapSvg color={false}/>
+    else return <DogSvg/>
+  }
+
   return (
-    <View style={[styles.searchAndFilterPanel]}>
+    <View style={search.displayType === 4 ? styles.searchAndFilterPanelMap:styles.searchAndFilterPanel}>
       <View style={[styles.searchHeader]}>
         <View style={styles.searchBar}>
-          <Searchbar
-            placeholder="Search"
-            onChangeText={onChangeSearch}
-            value={search.searchQuery}
-          />
+          {!showFilter ?<Searchbar
+              style={{maxHeight:'100%', minHeight:'100%'}}
+              placeholder="Search"
+              onChangeText={onChangeSearch}
+              value={search.searchQuery}
+          />:null}
         </View>
-        <Filter/>
+        <Filter show={showFilter} toggleFilter={toggleFilter}/>
       </View>
-      {true?<FiltersAddedPanel filter={filter}/>:null}
-      {search.searchResults.length !== 0 ?
+      {(filter.onlyPuppies || filter.myFavorites || filter.certifiedBreeders ||
+      !(JSON.stringify(filter.priceInterval) === JSON.stringify([0,26000])) || filter.dogBreeds.length > 0) ?
+          <FiltersAddedPanel filter={filter}/>:null
+      }
+      {search.searchResults.length !== 0 || search.displayType === 4 ?
         <View style={[styles.sortAndDisplay]}>
           <TouchableOpacity style={[styles.displayPanel, defaultStyles.shadowMedium]} onPress={() => dispatch(setDisplayType())}>
-            <View style={[styles.displayPanelIcon]}>
-              <DogSvg/>
+            <View style={defaultStyles.svgContainer}>
+              {getIconFilter(search.displayType)}
             </View>
-            <View style={[styles.displayPanelTextContainer]}>
-              <Text style={[styles.displayPanelText]}>Rute</Text>
-            </View>
+            <Text style={[styles.displayPanelText]}>{displayType[search.displayType]}</Text>
           </TouchableOpacity>
+          {search.displayType !== 4 ?
           <TouchableOpacity style={[styles.sortPanel, defaultStyles.shadowMedium]}>
-            <View style={[styles.displayPanelIcon]}>
+            <View style={defaultStyles.svgContainer}>
               <DogSvg/>
             </View>
-            <View style={[styles.displayPanelTextContainer]}>
-              <Text style={[styles.displayPanelText]}>I nærheten</Text>
-            </View>
-          </TouchableOpacity>
+            <Text style={[styles.displayPanelText]}>I nærheten</Text>
+          </TouchableOpacity>: null}
         </View>: null}
     </View>
   );
@@ -65,24 +79,36 @@ export default function SearchAndFilterPanel() {
 
 const styles = StyleSheet.create({
   searchAndFilterPanel:{
-    zIndex: 10,
-    position:'absolute',
-    height: screenHeight/5,
-    width: '100%',
+    paddingTop: screenHeight/25,
+    zIndex:100,
     marginTop: 20,
+    display: 'flex',
+    width: '100%',
+    paddingHorizontal: 20,
+    alignSelf: 'flex-start'
+  },
+  searchAndFilterPanelMap:{
+    paddingTop: screenHeight/25,
+    zIndex:100,
+    marginTop: 20,
+    display: 'flex',
+    width: '100%',
+    paddingHorizontal: 20,
+    alignSelf: 'flex-start',
+    position: "absolute"
   },
   searchHeader: {
-    paddingTop: 20,
-    paddingBottom: 20,
-    height: '50%',
+    zIndex:105,
+    minHeight: screenWidth/8,
+    maxHeight: screenWidth/8,
+    flexGrow: 1,
     display: "flex",
     flexDirection: 'row',
   },
   searchBar:{
-    backgroundColor: '#F9F9F9',
     flexGrow: 1,
     height: '100%',
-    marginRight: 20,
+    marginRight: 15,
     borderRadius: 5,
     justifyContent: "center"
   },
@@ -101,14 +127,13 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   sortAndDisplay:{
-    flex: 1,
+    paddingVertical: 10,
     justifyContent: 'space-between',
     flexDirection: 'row'
   },
   displayPanel:{
     backgroundColor: '#FFFFFF',
-    width: '30%',
-    height: (screenWidth-40)/8,
+    height: (screenWidth-40)/10, //why? 40 = standard screen padding, 10
     display:'flex',
     flexDirection:'row',
     justifyContent: 'center',
@@ -116,15 +141,9 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     borderTopLeftRadius: 0
   },
-  displayPanelIcon:{
-    height: '100%',
-    aspectRatio: 1
-  },
-  displayPanelTextContainer:{
-    flex: 1,
-    marginLeft: '5%'
-  },
   displayPanelText:{
+    marginLeft: 5,
+    marginRight: 5,
     fontSize: 15,
     color: '#717171',
     fontWeight: '600'
@@ -132,7 +151,7 @@ const styles = StyleSheet.create({
   sortPanel:{
     backgroundColor: '#FFFFFF',
     width: '35%',
-    height: (screenWidth-40)/8,
+    height: (screenWidth-40)/10,
     display:'flex',
     flexDirection:'row-reverse',
     justifyContent: 'center',

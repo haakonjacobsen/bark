@@ -15,12 +15,12 @@
         "size": "number",
         "cooperative": "number",
         "grooming": "number"
-      },
-      "questions": {
-        "livingSituation": 0,
-        "kids": false,
-        "experience": 1
       }
+    },
+    "Questions": {
+      "livingSituation": "number",
+      "kids": "boolean",
+      "experience": "boolean"
     },
     "Post": {
       "user": "User",

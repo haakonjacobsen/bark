@@ -3,26 +3,17 @@ import { StyleSheet } from 'react-native';
 const defaultStyles = StyleSheet.create({
   defScreen: {
     display: 'flex',
-    backgroundColor: '#FFFFFF',
+    backgroundColor:'white',
     width: '100%',
     height: '100%',
-    paddingLeft: 20,
-    paddingRight: 20,
-    overflow: 'visible'
+    paddingHorizontal: 20,
+    overflow: 'visible',
   },
   fullScreen: {
-
     display: 'flex',
     backgroundColor: '#FFFFFF',
     width: '100%',
     height: '100%',
-  },
-  absScreenPart:{
-    zIndex: 100,
-    display:'flex',
-    paddingLeft: 20,
-    paddingRight: 20,
-    alignItems: 'center',
   },
   home:{
   },
@@ -48,6 +39,11 @@ const defaultStyles = StyleSheet.create({
     color: 'black',
     fontWeight: '700',
     fontSize: 25
+  },
+  svgContainer:{
+    height: '100%',
+    aspectRatio: 1,
+    marginRight: 0,
   }
 });
 

@@ -6,21 +6,19 @@ export default function NoPostSection() {
 
 
   return (
-    <ScrollView>
-      <View style={[emptyStyle.container]}>
-        <Image source={require('../../assets/image/no-posts-dog.png')} style={emptyStyle.picture}/>
-        <View style={[emptyStyle.prevSearchPanel]}/>
-        <View style={[emptyStyle.textContainer]}>
-          <Text style={[defaultStyles.sectionHeaderText]}>Ingen resultater,  prøv igjen😕</Text>
-        </View>
+    <View style={[emptyStyle.container]}>
+      <Image source={require('../../assets/image/no-posts-dog.png')} style={emptyStyle.picture}/>
+      <View style={[emptyStyle.prevSearchPanel]}/>
+      <View style={[emptyStyle.textContainer]}>
+        <Text style={[defaultStyles.sectionHeaderText]}>Ingen resultater,  prøv igjen😕</Text>
       </View>
-    </ScrollView>
+    </View>
   );
 }
 
 const emptyStyle = StyleSheet.create({
   container: {
-    width: '100%'
+    width: '100%',
   },
   picture:{
     resizeMode:'contain',
