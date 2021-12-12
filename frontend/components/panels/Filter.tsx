@@ -1,48 +1,46 @@
-import {StyleSheet, Switch, View, Text, TouchableOpacity, Dimensions, Vibration} from "react-native";
+import {StyleSheet, Switch, View, Text, TouchableOpacity, Dimensions} from "react-native";
 import React, {useState} from "react";
-import DogSvg from "../svg/DogSvg";
 import defaultStyles from "../../styles/screens";
 import {toggleCertifiedBreeders, toggleFavorites, togglePuppies, updatePriceInterval} from "../../redux/features/filterSlice";
 import FilterSvg from "../svg/FilterSvg";
 import {useDispatch, useSelector} from "react-redux";
-import { Switch as PaperSwitch } from 'react-native-paper'
 import {RootState} from "../../redux/store";
-import {setSearchQuery} from "../../redux/features/searchSlice";
 // @ts-ignore
 import RangeSlider from 'rn-range-slider';
 import MultiSlider from "@ptomasroos/react-native-multi-slider";
+import CloseCrossSvg from "../svg/CloseCrossSvg";
 
 const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
 
-export default function Filter() {
-    const [showFilter, toggleFilter] = useState(false);
+export default function Filter(props:{show:boolean, toggleFilter: any}) {
     const filter = useSelector((state:RootState) => state.filter);
     const dispatch = useDispatch();
     const multiSliderValuesChange = (values: React.SetStateAction<number[]>) => {
         dispatch(updatePriceInterval(values));
-        Vibration.vibrate([1], false);
-        console.log('vibrate');
     };
 
-    if (showFilter) {
+    if (!props.show) {
         return (
-            <View>
-                <TouchableOpacity style={[styles.filterButton, defaultStyles.shadowMedium]} onPress={() => toggleFilter(!showFilter)}>
+            <View style={[styles.filterButton, defaultStyles.svgContainer, defaultStyles.shadowMedium]}>
+                <TouchableOpacity onPress={() => props.toggleFilter(!props.show)}>
                     <FilterSvg/>
                 </TouchableOpacity>
             </View>
-        )}
+        )
+    }
     return (
         <View style={[styles.filterPanel, defaultStyles.shadowMedium]}>
             <View style={styles.filterPanelHeader}>
-                <TouchableOpacity style={[styles.filterButton]} onPress={() => toggleFilter(!showFilter)}>
-                    <FilterSvg/>
+                <TouchableOpacity style={[styles.filterButton]} onPress={() => props.toggleFilter(!props.show)}>
+                    <CloseCrossSvg/>
                 </TouchableOpacity>
-                <Text style={{fontSize: 20, fontWeight:"600"}}>Filter</Text>
-                <TouchableOpacity style={[styles.filterButton]} onPress={() => toggleFilter(!showFilter)}>
-                    <FilterSvg/>
-                </TouchableOpacity>
+                <View style={{flexDirection:"row", alignItems:'center'}}>
+                    <Text style={{fontSize: 20, fontWeight:"400", color:'#717171'}}>Filter</Text>
+                    <TouchableOpacity style={[styles.filterButton]} onPress={() => props.toggleFilter(!props.show)}>
+                        <FilterSvg/>
+                    </TouchableOpacity>
+                </View>
             </View>
             <View style={styles.filterOptions}>
                 <View style={[styles.filterOption, styles.switchOption]}>
@@ -87,10 +85,11 @@ export default function Filter() {
                             height: 6,
                             backgroundColor: '#EDD994'
                         }}
-
                     />
                     <View style={styles.sliderOptionNumbers}>
-                        <Text style={styles.sliderOptionNumberText}>{filter.priceInterval[0].toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")}</Text>
+                        <Text style={styles.sliderOptionNumberText}>
+                            {filter.priceInterval[0].toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")}
+                        </Text>
                         <Text style={styles.sliderOptionNumberText}>
                             {filter.priceInterval[1]>25000?"25 000+":filter.priceInterval[1].toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")}
                         </Text>
@@ -103,27 +102,16 @@ export default function Filter() {
 
 const styles = StyleSheet.create({
     filterPanel:{
-        elevation: 2,
-        zIndex: 10,
-        borderTopRightRadius: 10,
-        borderTopLeftRadius: 10,
-        borderBottomLeftRadius: 10,
-        borderBottomRightRadius: 10,
+        borderRadius: 10,
         backgroundColor: '#F9F9F9',
         width: '100%',
         position: "absolute",
-        marginTop: 20,
     },
     filterButton:{
-        zIndex:1,
-        elevation:1,
         backgroundColor: '#F9F9F9',
         height: '100%',
         aspectRatio: 1,
-        borderRadius: 5,
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
+        borderRadius: 5
     },
     filterButtonActive:{
         backgroundColor: '#F9F9F9',
@@ -135,7 +123,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     filterPanelHeader:{
-        height: 45,
+        height: 50,
         display: "flex",
         flexDirection: 'row',
         justifyContent: "space-between",
