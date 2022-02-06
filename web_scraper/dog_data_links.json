@@ -1,0 +1,906 @@
+{
+  "Affenpinscher": {
+    "breed": "Affenpinscher",
+    "breed_url": "https://www.nkk.no/raser/affenpinscher-article8300-815.html"
+  },
+  "Afghansk mynde": {
+    "breed": "Afghansk mynde",
+    "breed_url": "https://www.nkk.no/raser/afghansk-mynde-article8351-815.html"
+  },
+  "Airedale terrier": {
+    "breed": "Airedale terrier",
+    "breed_url": "https://www.nkk.no/raser/airedale-terrier-article8220-815.html"
+  },
+  "Akita": {
+    "breed": "Akita",
+    "breed_url": "https://www.nkk.no/raser/akita-article32003-815.html"
+  },
+  "Alaskan malamute": {
+    "breed": "Alaskan malamute",
+    "breed_url": "https://www.nkk.no/raser/alaskan-malamute-article8138-815.html"
+  },
+  "American akita": {
+    "breed": "American akita",
+    "breed_url": "https://www.nkk.no/raser/american-akita-article8239-815.html"
+  },
+  "Amerikansk cocker spaniel": {
+    "breed": "Amerikansk cocker spaniel",
+    "breed_url": "https://www.nkk.no/raser/amerikansk-cocker-spaniel-article8210-815.html"
+  },
+  "Amerikansk nakenterrier": {
+    "breed": "Amerikansk nakenterrier",
+    "breed_url": "https://www.nkk.no/raser/amerikansk-nakenterrier-article149606-815.html"
+  },
+  "Australian shepherd": {
+    "breed": "Australian shepherd",
+    "breed_url": "https://www.nkk.no/raser/australian-shepherd-article8151-815.html"
+  },
+  "Australsk kelpie": {
+    "breed": "Australsk kelpie",
+    "breed_url": "https://www.nkk.no/raser/australsk-kelpie-article8292-815.html"
+  },
+  "Australsk terrier": {
+    "breed": "Australsk terrier",
+    "breed_url": "https://www.nkk.no/raser/australsk-terrier-article8288-815.html"
+  },
+  "Azawakh": {
+    "breed": "Azawakh",
+    "breed_url": "https://www.nkk.no/raser/azawakh-article8352-815.html"
+  },
+  "Basenji": {
+    "breed": "Basenji",
+    "breed_url": "https://www.nkk.no/raser/basenji-article8152-815.html"
+  },
+  "Basset artesien normand": {
+    "breed": "Basset artesien normand",
+    "breed_url": "https://www.nkk.no/raser/basset-artesien-normand-article8246-815.html"
+  },
+  "Basset fauve de bretagne": {
+    "breed": "Basset fauve de bretagne",
+    "breed_url": "https://www.nkk.no/raser/basset-fauve-de-bretagne-article8240-815.html"
+  },
+  "Basset hound": {
+    "breed": "Basset hound",
+    "breed_url": "https://www.nkk.no/raser/basset-hound-article8291-815.html"
+  },
+  "Bayersk viltsporhund": {
+    "breed": "Bayersk viltsporhund",
+    "breed_url": "https://www.nkk.no/raser/bayersk-viltsporhund-article8261-815.html"
+  },
+  "Beagle": {
+    "breed": "Beagle",
+    "breed_url": "https://www.nkk.no/raser/beagle-article8153-815.html"
+  },
+  "Bearded collie": {
+    "breed": "Bearded collie",
+    "breed_url": "https://www.nkk.no/raser/bearded-collie-article18492-815.html"
+  },
+  "Beauceron": {
+    "breed": "Beauceron",
+    "breed_url": "https://www.nkk.no/raser/beauceron-article8286-815.html"
+  },
+  "Bedlington terrier": {
+    "breed": "Bedlington terrier",
+    "breed_url": "https://www.nkk.no/raser/bedlington-terrier-article8221-815.html"
+  },
+  "Belgisk fårehund, groenendael": {
+    "breed": "Belgisk fårehund, groenendael",
+    "breed_url": "https://www.nkk.no/raser/belgisk-farehund-groenendael-article8154-815.html"
+  },
+  "Belgisk fårehund, malinois": {
+    "breed": "Belgisk fårehund, malinois",
+    "breed_url": "https://www.nkk.no/raser/belgisk-farehund-malinois-article8155-815.html"
+  },
+  "Belgisk fårehund, tervueren": {
+    "breed": "Belgisk fårehund, tervueren",
+    "breed_url": "https://www.nkk.no/raser/belgisk-farehund-tervueren-article8156-815.html"
+  },
+  "Berner sennenhund": {
+    "breed": "Berner sennenhund",
+    "breed_url": "https://www.nkk.no/raser/berner-sennenhund-article8157-815.html"
+  },
+  "Bichon frisé": {
+    "breed": "Bichon frisé",
+    "breed_url": "https://www.nkk.no/raser/bichon-frise-article8158-815.html"
+  },
+  "Bichon havanais": {
+    "breed": "Bichon havanais",
+    "breed_url": "https://www.nkk.no/raser/bichon-havanais-article8159-815.html"
+  },
+  "Bolognese": {
+    "breed": "Bolognese",
+    "breed_url": "https://www.nkk.no/raser/bolognese-article194520-815.html"
+  },
+  "Bordeaux dogge": {
+    "breed": "Bordeaux dogge",
+    "breed_url": "https://www.nkk.no/raser/bordeaux-dogge-article8236-815.html"
+  },
+  "Border collie": {
+    "breed": "Border collie",
+    "breed_url": "https://www.nkk.no/raser/border-collie-article8160-815.html"
+  },
+  "Border terrier": {
+    "breed": "Border terrier",
+    "breed_url": "https://www.nkk.no/raser/border-terrier-article8222-815.html"
+  },
+  "Borzoi": {
+    "breed": "Borzoi",
+    "breed_url": "https://www.nkk.no/raser/borzoi-article8353-815.html"
+  },
+  "Boston terrier": {
+    "breed": "Boston terrier",
+    "breed_url": "https://www.nkk.no/raser/boston-terrier-article8145-815.html"
+  },
+  "Boxer": {
+    "breed": "Boxer",
+    "breed_url": "https://www.nkk.no/raser/boxer-article8161-815.html"
+  },
+  "Bracco italiano": {
+    "breed": "Bracco italiano",
+    "breed_url": "https://www.nkk.no/raser/bracco-italiano-article8195-815.html"
+  },
+  "Brasiliansk terrier": {
+    "breed": "Brasiliansk terrier",
+    "breed_url": "https://www.nkk.no/raser/brasiliansk-terrier-article166331-815.html"
+  },
+  "Breton": {
+    "breed": "Breton",
+    "breed_url": "https://www.nkk.no/raser/breton-article8144-815.html"
+  },
+  "Briard": {
+    "breed": "Briard",
+    "breed_url": "https://www.nkk.no/raser/briard-article8238-815.html"
+  },
+  "Bull terrier": {
+    "breed": "Bull terrier",
+    "breed_url": "https://www.nkk.no/raser/bull-terrier-article8223-815.html"
+  },
+  "Bullmastiff": {
+    "breed": "Bullmastiff",
+    "breed_url": "https://www.nkk.no/raser/bullmastiff-article8315-815.html"
+  },
+  "Cairn terrier": {
+    "breed": "Cairn terrier",
+    "breed_url": "https://www.nkk.no/raser/cairn-terrier-article8135-815.html"
+  },
+  "Cavalier king charles spaniel": {
+    "breed": "Cavalier king charles spaniel",
+    "breed_url": "https://www.nkk.no/raser/cavalier-king-charles-spaniel-article8162-815.html"
+  },
+  "Cesky terrier": {
+    "breed": "Cesky terrier",
+    "breed_url": "https://www.nkk.no/raser/cesky-terrier-article121082-815.html"
+  },
+  "Chihuahua korthåret": {
+    "breed": "Chihuahua korthåret",
+    "breed_url": "https://www.nkk.no/raser/chihuahua-kortharet-article8350-815.html"
+  },
+  "Chihuahua langhåret": {
+    "breed": "Chihuahua langhåret",
+    "breed_url": "https://www.nkk.no/raser/chihuahua-langha-ret-article8163-815.html"
+  },
+  "Chinese crested": {
+    "breed": "Chinese crested",
+    "breed_url": "https://www.nkk.no/raser/chinese-crested-article8118-815.html"
+  },
+  "Chinese crested powderpuff": {
+    "breed": "Chinese crested powderpuff",
+    "breed_url": "https://www.nkk.no/raser/chinese-crested-powderpuff-article8164-815.html"
+  },
+  "Chow chow": {
+    "breed": "Chow chow",
+    "breed_url": "https://www.nkk.no/raser/chow-chow-article8249-815.html"
+  },
+  "Cocker spaniel": {
+    "breed": "Cocker spaniel",
+    "breed_url": "https://www.nkk.no/raser/cocker-spaniel-article8165-815.html"
+  },
+  "Collie korthåret": {
+    "breed": "Collie korthåret",
+    "breed_url": "https://www.nkk.no/raser/collie-kortharet-article8299-815.html"
+  },
+  "Collie langhåret": {
+    "breed": "Collie langhåret",
+    "breed_url": "https://www.nkk.no/raser/collie-langharet-article8126-815.html"
+  },
+  "Coton de tulear": {
+    "breed": "Coton de tulear",
+    "breed_url": "https://www.nkk.no/raser/coton-de-tulear-article8258-815.html"
+  },
+  "Curly coated retriever": {
+    "breed": "Curly coated retriever",
+    "breed_url": "https://www.nkk.no/raser/curly-coated-retriever-article25512-815.html"
+  },
+  "Dachshund korthåret": {
+    "breed": "Dachshund korthåret",
+    "breed_url": "https://www.nkk.no/raser/dachshund-kortharet-article8123-815.html"
+  },
+  "Dachshund langhåret": {
+    "breed": "Dachshund langhåret",
+    "breed_url": "https://www.nkk.no/raser/dachshund-langharet-article8143-815.html"
+  },
+  "Dachshund strihåret": {
+    "breed": "Dachshund strihåret",
+    "breed_url": "https://www.nkk.no/raser/dachshund-striharet-article8377-815.html"
+  },
+  "Dalmatiner": {
+    "breed": "Dalmatiner",
+    "breed_url": "https://www.nkk.no/raser/dalmatiner-article8147-815.html"
+  },
+  "Dandie dinmont terrier": {
+    "breed": "Dandie dinmont terrier",
+    "breed_url": "https://www.nkk.no/raser/dandie-dinmont-terrier-article166332-815.html"
+  },
+  "Dansk-svensk gårdshund": {
+    "breed": "Dansk-svensk gårdshund",
+    "breed_url": "https://www.nkk.no/raser/dansk-svensk-gardshund-article8116-815.html"
+  },
+  "Dobermann": {
+    "breed": "Dobermann",
+    "breed_url": "https://www.nkk.no/raser/dobermann-article8166-815.html"
+  },
+  "Drentsche patrijshond": {
+    "breed": "Drentsche patrijshond",
+    "breed_url": "https://www.nkk.no/raser/drentsche-patrijshond-article8204-815.html"
+  },
+  "Drever": {
+    "breed": "Drever",
+    "breed_url": "https://www.nkk.no/raser/drever-article8137-815.html"
+  },
+  "Dunker": {
+    "breed": "Dunker",
+    "breed_url": "https://www.nkk.no/raser/dunker-article8128-815.html"
+  },
+  "Dvergdachshund korthåret": {
+    "breed": "Dvergdachshund korthåret",
+    "breed_url": "https://www.nkk.no/raser/dvergdachshund-kortharet-article8379-815.html"
+  },
+  "Dvergdachshund langhåret": {
+    "breed": "Dvergdachshund langhåret",
+    "breed_url": "https://www.nkk.no/raser/dvergdachshund-langharet-article8380-815.html"
+  },
+  "Dvergdachshund strihåret": {
+    "breed": "Dvergdachshund strihåret",
+    "breed_url": "https://www.nkk.no/raser/dvergdachshund-striharet-article8381-815.html"
+  },
+  "Dvergpinscher": {
+    "breed": "Dvergpinscher",
+    "breed_url": "https://www.nkk.no/raser/dvergpinscher-article8134-815.html"
+  },
+  "Dvergpuddel": {
+    "breed": "Dvergpuddel",
+    "breed_url": "https://www.nkk.no/raser/dvergpuddel-article8117-815.html"
+  },
+  "Dvergschnauzer hvit": {
+    "breed": "Dvergschnauzer hvit",
+    "breed_url": "https://www.nkk.no/raser/dvergschnauzer-hvit-article8168-815.html"
+  },
+  "Dvergschnauzer salt/pepper": {
+    "breed": "Dvergschnauzer salt/pepper",
+    "breed_url": "https://www.nkk.no/raser/dvergschnauzer-salt-pepper-article8169-815.html"
+  },
+  "Dvergschnauzer sort": {
+    "breed": "Dvergschnauzer sort",
+    "breed_url": "https://www.nkk.no/raser/dvergschnauzer-sort-article8170-815.html"
+  },
+  "Dvergschnauzer sort/silver": {
+    "breed": "Dvergschnauzer sort/silver",
+    "breed_url": "https://www.nkk.no/raser/dvergschnauzer-sort-silver-article8130-815.html"
+  },
+  "Engelsk bulldog": {
+    "breed": "Engelsk bulldog",
+    "breed_url": "https://www.nkk.no/raser/engelsk-bulldog-article8171-815.html"
+  },
+  "Engelsk mastiff": {
+    "breed": "Engelsk mastiff",
+    "breed_url": "https://www.nkk.no/raser/engelsk-mastiff-article8314-815.html"
+  },
+  "Engelsk setter": {
+    "breed": "Engelsk setter",
+    "breed_url": "https://www.nkk.no/raser/engelsk-setter-article8172-815.html"
+  },
+  "Engelsk springer spaniel": {
+    "breed": "Engelsk springer spaniel",
+    "breed_url": "https://www.nkk.no/raser/engelsk-springer-spaniel-article8141-815.html"
+  },
+  "Engelsk toy terrier": {
+    "breed": "Engelsk toy terrier",
+    "breed_url": "https://www.nkk.no/raser/engelsk-toy-terrier-article8224-815.html"
+  },
+  "Eurasier": {
+    "breed": "Eurasier",
+    "breed_url": "https://www.nkk.no/raser/eurasier-article8173-815.html"
+  },
+  "Faraohund": {
+    "breed": "Faraohund",
+    "breed_url": "https://www.nkk.no/raser/faraohund-article21421-815.html"
+  },
+  "Field spaniel": {
+    "breed": "Field spaniel",
+    "breed_url": "https://www.nkk.no/raser/field-spaniel-article8301-815.html"
+  },
+  "Finsk lapphund": {
+    "breed": "Finsk lapphund",
+    "breed_url": "https://www.nkk.no/raser/finsk-lapphund-article8174-815.html"
+  },
+  "Finsk spets": {
+    "breed": "Finsk spets",
+    "breed_url": "https://www.nkk.no/raser/finsk-spets-article8247-815.html"
+  },
+  "Finsk støver": {
+    "breed": "Finsk støver",
+    "breed_url": "https://www.nkk.no/raser/finsk-stover-article8124-815.html"
+  },
+  "Flat coated retriever": {
+    "breed": "Flat coated retriever",
+    "breed_url": "https://www.nkk.no/raser/flat-coated-retriever-article8175-815.html"
+  },
+  "Fox terrier glatthåret": {
+    "breed": "Fox terrier glatthåret",
+    "breed_url": "https://www.nkk.no/raser/fox-terrier-glattharet-article8243-815.html"
+  },
+  "Fox terrier ruhåret": {
+    "breed": "Fox terrier ruhåret",
+    "breed_url": "https://www.nkk.no/raser/fox-terrier-ruharet-article8310-815.html"
+  },
+  "Fransk bulldog": {
+    "breed": "Fransk bulldog",
+    "breed_url": "https://www.nkk.no/raser/fransk-bulldog-article8140-815.html"
+  },
+  "Golden retriever": {
+    "breed": "Golden retriever",
+    "breed_url": "https://www.nkk.no/raser/golden-retriever-article8177-815.html"
+  },
+  "Gordon setter": {
+    "breed": "Gordon setter",
+    "breed_url": "https://www.nkk.no/raser/gordon-setter-article8178-815.html"
+  },
+  "Grand danois": {
+    "breed": "Grand danois",
+    "breed_url": "https://www.nkk.no/raser/grand-danois-article8179-815.html"
+  },
+  "Greyhound": {
+    "breed": "Greyhound",
+    "breed_url": "https://www.nkk.no/raser/greyhound-article8297-815.html"
+  },
+  "Griffon belge": {
+    "breed": "Griffon belge",
+    "breed_url": "https://www.nkk.no/raser/griffon-belge-article8308-815.html"
+  },
+  "Griffon bruxellois": {
+    "breed": "Griffon bruxellois",
+    "breed_url": "https://www.nkk.no/raser/griffon-bruxellois-article8307-815.html"
+  },
+  "Grosser münsterländer": {
+    "breed": "Grosser münsterländer",
+    "breed_url": "https://www.nkk.no/raser/grosser-munsterlander-article8205-815.html"
+  },
+  "Grosser schweizer sennenhund": {
+    "breed": "Grosser schweizer sennenhund",
+    "breed_url": "https://www.nkk.no/raser/grosser-schweizer-sennenhund-article8309-815.html"
+  },
+  "Grønlandshund": {
+    "breed": "Grønlandshund",
+    "breed_url": "https://www.nkk.no/raser/gronlandshund-article8176-815.html"
+  },
+  "Haldenstøver": {
+    "breed": "Haldenstøver",
+    "breed_url": "https://www.nkk.no/raser/haldenstover-article8305-815.html"
+  },
+  "Hamiltonstøver": {
+    "breed": "Hamiltonstøver",
+    "breed_url": "https://www.nkk.no/raser/hamiltonstover-article8233-815.html"
+  },
+  "Hannoveransk viltsporhund": {
+    "breed": "Hannoveransk viltsporhund",
+    "breed_url": "https://www.nkk.no/raser/hannoveransk-viltsporhund-article8362-815.html"
+  },
+  "Hovawart": {
+    "breed": "Hovawart",
+    "breed_url": "https://www.nkk.no/raser/hovawart-article8263-815.html"
+  },
+  "Hvit gjeterhund": {
+    "breed": "Hvit gjeterhund",
+    "breed_url": "https://www.nkk.no/raser/hvit-gjeterhund-article8212-815.html"
+  },
+  "Hygenhund": {
+    "breed": "Hygenhund",
+    "breed_url": "https://www.nkk.no/raser/hygenhund-article8289-815.html"
+  },
+  "Irish glen of imaal terrier": {
+    "breed": "Irish glen of imaal terrier",
+    "breed_url": "https://www.nkk.no/raser/irish-glen-of-imaal-terrier-article166333-815.html"
+  },
+  "Irish softcoated wheaten terrier": {
+    "breed": "Irish softcoated wheaten terrier",
+    "breed_url": "https://www.nkk.no/raser/irish-softcoated-wheaten-terrier-article8129-815.html"
+  },
+  "Irsk rød og hvit setter": {
+    "breed": "Irsk rød og hvit setter",
+    "breed_url": "https://www.nkk.no/raser/irsk-rod-og-hvit-setter-article8202-815.html"
+  },
+  "Irsk setter": {
+    "breed": "Irsk setter",
+    "breed_url": "https://www.nkk.no/raser/irsk-setter-article8201-815.html"
+  },
+  "Irsk terrier": {
+    "breed": "Irsk terrier",
+    "breed_url": "https://www.nkk.no/raser/irsk-terrier-article149617-815.html"
+  },
+  "Irsk ulvehund": {
+    "breed": "Irsk ulvehund",
+    "breed_url": "https://www.nkk.no/raser/irsk-ulvehund-article8360-815.html"
+  },
+  "Islandsk fårehund": {
+    "breed": "Islandsk fårehund",
+    "breed_url": "https://www.nkk.no/raser/islandsk-farehund-article8248-815.html"
+  },
+  "Italiensk mynde": {
+    "breed": "Italiensk mynde",
+    "breed_url": "https://www.nkk.no/raser/italiensk-mynde-article8354-815.html"
+  },
+  "Italiensk spinone": {
+    "breed": "Italiensk spinone",
+    "breed_url": "https://www.nkk.no/raser/italiensk-spinone-article8196-815.html"
+  },
+  "Jack russell terrier": {
+    "breed": "Jack russell terrier",
+    "breed_url": "https://www.nkk.no/raser/jack-russell-terrier-article8181-815.html"
+  },
+  "Japansk spisshund": {
+    "breed": "Japansk spisshund",
+    "breed_url": "https://www.nkk.no/raser/japansk-spisshund-article8120-815.html"
+  },
+  "Jämthund": {
+    "breed": "Jämthund",
+    "breed_url": "https://www.nkk.no/raser/jamthund-article8182-815.html"
+  },
+  "Kanindachshund korthåret": {
+    "breed": "Kanindachshund korthåret",
+    "breed_url": "https://www.nkk.no/raser/kanindachshund-kortharet-article8378-815.html"
+  },
+  "Kanindachshund langhåret": {
+    "breed": "Kanindachshund langhåret",
+    "breed_url": "https://www.nkk.no/raser/kanindachshund-langharet-article8216-815.html"
+  },
+  "Kanindachshund strihåret": {
+    "breed": "Kanindachshund strihåret",
+    "breed_url": "https://www.nkk.no/raser/kanindachshund-striharet-article8376-815.html"
+  },
+  "Keeshond": {
+    "breed": "Keeshond",
+    "breed_url": "https://www.nkk.no/raser/keeshond-article8304-815.html"
+  },
+  "Kerry blue terrier": {
+    "breed": "Kerry blue terrier",
+    "breed_url": "https://www.nkk.no/raser/kerry-blue-terrier-article8226-815.html"
+  },
+  "Kleiner Münsterländer": {
+    "breed": "Kleiner Münsterländer",
+    "breed_url": "https://www.nkk.no/raser/kleiner-munsterlander-article8206-815.html"
+  },
+  "Kleinspitz": {
+    "breed": "Kleinspitz",
+    "breed_url": "https://www.nkk.no/raser/kleinspitz-article8148-815.html"
+  },
+  "Kroatisk gjeterhund": {
+    "breed": "Kroatisk gjeterhund",
+    "breed_url": "https://www.nkk.no/raser/kroatisk-gjeterhund-article69101-815.html"
+  },
+  "Kuvasz": {
+    "breed": "Kuvasz",
+    "breed_url": "https://www.nkk.no/raser/kuvasz-article31993-815.html"
+  },
+  "Labrador retriever": {
+    "breed": "Labrador retriever",
+    "breed_url": "https://www.nkk.no/raser/labrador-retriever-article8183-815.html"
+  },
+  "Lagotto romagnolo": {
+    "breed": "Lagotto romagnolo",
+    "breed_url": "https://www.nkk.no/raser/lagotto-romagnolo-article8146-815.html"
+  },
+  "Lakeland terrier": {
+    "breed": "Lakeland terrier",
+    "breed_url": "https://www.nkk.no/raser/lakeland-terrier-article121014-815.html"
+  },
+  "Lancashire heeler": {
+    "breed": "Lancashire heeler",
+    "breed_url": "https://www.nkk.no/raser/lancashire-heeler-article36424-815.html"
+  },
+  "Lapsk vallhund": {
+    "breed": "Lapsk vallhund",
+    "breed_url": "https://www.nkk.no/raser/lapsk-vallhund-article8262-815.html"
+  },
+  "Leonberger": {
+    "breed": "Leonberger",
+    "breed_url": "https://www.nkk.no/raser/leonberger-article8131-815.html"
+  },
+  "Lhasa apso": {
+    "breed": "Lhasa apso",
+    "breed_url": "https://www.nkk.no/raser/lhasa-apso-article8150-815.html"
+  },
+  "Liten bernerstøver": {
+    "breed": "Liten bernerstøver",
+    "breed_url": "https://www.nkk.no/raser/liten-bernerstover-article159180-815.html"
+  },
+  "Luzernerstøver": {
+    "breed": "Luzernerstøver",
+    "breed_url": "https://www.nkk.no/raser/luzernerstover-article8265-815.html"
+  },
+  "Løwchen": {
+    "breed": "Løwchen",
+    "breed_url": "https://www.nkk.no/raser/lowchen-article8257-815.html"
+  },
+  "Malteser": {
+    "breed": "Malteser",
+    "breed_url": "https://www.nkk.no/raser/malteser-article8234-815.html"
+  },
+  "Manchester terrier": {
+    "breed": "Manchester terrier",
+    "breed_url": "https://www.nkk.no/raser/manchester-terrier-article8232-815.html"
+  },
+  "Maremma": {
+    "breed": "Maremma",
+    "breed_url": "https://www.nkk.no/raser/maremma-article36354-815.html"
+  },
+  "Mellompuddel": {
+    "breed": "Mellompuddel",
+    "breed_url": "https://www.nkk.no/raser/mellompuddel-article8121-815.html"
+  },
+  "Miniature bull terrier": {
+    "breed": "Miniature bull terrier",
+    "breed_url": "https://www.nkk.no/raser/miniature-bull-terrier-article8242-815.html"
+  },
+  "Mittelspitz": {
+    "breed": "Mittelspitz",
+    "breed_url": "https://www.nkk.no/raser/mittelspitz-article8213-815.html"
+  },
+  "Mops": {
+    "breed": "Mops",
+    "breed_url": "https://www.nkk.no/raser/mops-article8112-815.html"
+  },
+  "Mudi": {
+    "breed": "Mudi",
+    "breed_url": "https://www.nkk.no/raser/mudi-article31981-815.html"
+  },
+  "Newfoundlandshund": {
+    "breed": "Newfoundlandshund",
+    "breed_url": "https://www.nkk.no/raser/newfoundlandshund-article8115-815.html"
+  },
+  "Norfolk terrier": {
+    "breed": "Norfolk terrier",
+    "breed_url": "https://www.nkk.no/raser/norfolk-terrier-article8230-815.html"
+  },
+  "Norsk buhund": {
+    "breed": "Norsk buhund",
+    "breed_url": "https://www.nkk.no/raser/norsk-buhund-article8184-815.html"
+  },
+  "Norsk elghund grå": {
+    "breed": "Norsk elghund grå",
+    "breed_url": "https://www.nkk.no/raser/norsk-elghund-gra-article8348-815.html"
+  },
+  "Norsk elghund sort": {
+    "breed": "Norsk elghund sort",
+    "breed_url": "https://www.nkk.no/raser/norsk-elghund-sort-article8125-815.html"
+  },
+  "Norsk lundehund": {
+    "breed": "Norsk lundehund",
+    "breed_url": "https://www.nkk.no/raser/norsk-lundehund-article8215-815.html"
+  },
+  "Norwich terrier": {
+    "breed": "Norwich terrier",
+    "breed_url": "https://www.nkk.no/raser/norwich-terrier-article8231-815.html"
+  },
+  "Nova scotia duck tolling retriever": {
+    "breed": "Nova scotia duck tolling retriever",
+    "breed_url": "https://www.nkk.no/raser/nova-scotia-duck-tolling-retriever-article8133-815.html"
+  },
+  "Papillon": {
+    "breed": "Papillon",
+    "breed_url": "https://www.nkk.no/raser/papillon-article8142-815.html"
+  },
+  "Parson russell terrier": {
+    "breed": "Parson russell terrier",
+    "breed_url": "https://www.nkk.no/raser/parson-russell-terrier-article121083-815.html"
+  },
+  "Pekingeser": {
+    "breed": "Pekingeser",
+    "breed_url": "https://www.nkk.no/raser/pekingeser-article8296-815.html"
+  },
+  "Petit basset griffon vendeen": {
+    "breed": "Petit basset griffon vendeen",
+    "breed_url": "https://www.nkk.no/raser/petit-basset-griffon-vendeen-article8185-815.html"
+  },
+  "Petit brabancon": {
+    "breed": "Petit brabancon",
+    "breed_url": "https://www.nkk.no/raser/petit-brabancon-article8186-815.html"
+  },
+  "Phalene": {
+    "breed": "Phalene",
+    "breed_url": "https://www.nkk.no/raser/phalene-article8383-815.html"
+  },
+  "Pinscher": {
+    "breed": "Pinscher",
+    "breed_url": "https://www.nkk.no/raser/pinscher-article8290-815.html"
+  },
+  "Podenco ibicenco glatthår": {
+    "breed": "Podenco ibicenco glatthår",
+    "breed_url": "https://www.nkk.no/raser/podenco-ibicenco-glatthar-article21404-815.html"
+  },
+  "Podengo portugues liten glatthåret": {
+    "breed": "Podengo portugues liten glatthåret",
+    "breed_url": "https://www.nkk.no/raser/podengo-portugues-liten-glattharet-article8241-815.html"
+  },
+  "Pointer": {
+    "breed": "Pointer",
+    "breed_url": "https://www.nkk.no/raser/pointer-article8136-815.html"
+  },
+  "Polsk mynde": {
+    "breed": "Polsk mynde",
+    "breed_url": "https://www.nkk.no/raser/polsk-mynde-article8355-815.html"
+  },
+  "Pomeranian": {
+    "breed": "Pomeranian",
+    "breed_url": "https://www.nkk.no/raser/pomeranian-article8361-815.html"
+  },
+  "Portugisisk vannhund": {
+    "breed": "Portugisisk vannhund",
+    "breed_url": "https://www.nkk.no/raser/portugisisk-vannhund-article8127-815.html"
+  },
+  "Prazsky krysarik": {
+    "breed": "Prazsky krysarik",
+    "breed_url": "https://www.nkk.no/raser/prazsky-krysarik-article8259-815.html"
+  },
+  "Presa canario": {
+    "breed": "Presa canario",
+    "breed_url": "https://www.nkk.no/raser/presa-canario-article8167-815.html"
+  },
+  "Puli": {
+    "breed": "Puli",
+    "breed_url": "https://www.nkk.no/raser/puli-article31982-815.html"
+  },
+  "Pumi": {
+    "breed": "Pumi",
+    "breed_url": "https://www.nkk.no/raser/pumi-article8306-815.html"
+  },
+  "Pyreneeisk gjeterhund": {
+    "breed": "Pyreneeisk gjeterhund",
+    "breed_url": "https://www.nkk.no/raser/pyreneeisk-gjeterhund-article36392-815.html"
+  },
+  "Pyreneerhund": {
+    "breed": "Pyreneerhund",
+    "breed_url": "https://www.nkk.no/raser/pyreneerhund-article8251-815.html"
+  },
+  "Pyreneisk gjeterhund med korthåret hode": {
+    "breed": "Pyreneisk gjeterhund med korthåret hode",
+    "breed_url": "https://www.nkk.no/raser/pyreneisk-gjeterhund-med-kortharet-hode-article33006-815.html"
+  },
+  "Rhodesian ridgeback": {
+    "breed": "Rhodesian ridgeback",
+    "breed_url": "https://www.nkk.no/raser/rhodesian-ridgeback-article8113-815.html"
+  },
+  "Riesenschnauzer sort": {
+    "breed": "Riesenschnauzer sort",
+    "breed_url": "https://www.nkk.no/raser/riesenschnauzer-sort-article8187-815.html"
+  },
+  "Rottweiler": {
+    "breed": "Rottweiler",
+    "breed_url": "https://www.nkk.no/raser/rottweiler-article8208-815.html"
+  },
+  "Russisk toy, korthåret": {
+    "breed": "Russisk toy, korthåret",
+    "breed_url": "https://www.nkk.no/raser/russisk-toy-kortharet-article8256-815.html"
+  },
+  "Russisk toy, langhåret": {
+    "breed": "Russisk toy, langhåret",
+    "breed_url": "https://www.nkk.no/raser/russisk-toy-langharet-article8252-815.html"
+  },
+  "Russisk tsvetnaya bolonka": {
+    "breed": "Russisk tsvetnaya bolonka",
+    "breed_url": "https://www.nkk.no/raser/russisk-tsvetnaya-bolonka-article8244-815.html"
+  },
+  "Saluki": {
+    "breed": "Saluki",
+    "breed_url": "https://www.nkk.no/raser/saluki-article8356-815.html"
+  },
+  "Samojedhund": {
+    "breed": "Samojedhund",
+    "breed_url": "https://www.nkk.no/raser/samojedhund-article8209-815.html"
+  },
+  "Sankt bernhardshund korthåret": {
+    "breed": "Sankt bernhardshund korthåret",
+    "breed_url": "https://www.nkk.no/raser/sankt-bernhardshund-kortharet-article8188-815.html"
+  },
+  "Sankt bernhardshund langhåret": {
+    "breed": "Sankt bernhardshund langhåret",
+    "breed_url": "https://www.nkk.no/raser/sankt-bernhardshund-langharet-article10656-815.html"
+  },
+  "Schapendoes": {
+    "breed": "Schapendoes",
+    "breed_url": "https://www.nkk.no/raser/schapendoes-article8264-815.html"
+  },
+  "Schnauzer salt/pepper": {
+    "breed": "Schnauzer salt/pepper",
+    "breed_url": "https://www.nkk.no/raser/schnauzer-salt-pepper-article8295-815.html"
+  },
+  "Schnauzer sort": {
+    "breed": "Schnauzer sort",
+    "breed_url": "https://www.nkk.no/raser/schnauzer-sort-article8294-815.html"
+  },
+  "Schäferhund langhår": {
+    "breed": "Schäferhund langhår",
+    "breed_url": "https://www.nkk.no/raser/schaferhund-langhar-article100741-815.html"
+  },
+  "Schäferhund normalhår": {
+    "breed": "Schäferhund normalhår",
+    "breed_url": "https://www.nkk.no/raser/schaferhund-normalhar-article8189-815.html"
+  },
+  "Sealyham terrier": {
+    "breed": "Sealyham terrier",
+    "breed_url": "https://www.nkk.no/raser/sealyham-terrier-article166334-815.html"
+  },
+  "Shetland sheepdog": {
+    "breed": "Shetland sheepdog",
+    "breed_url": "https://www.nkk.no/raser/shetland-sheepdog-article8190-815.html"
+  },
+  "Shiba": {
+    "breed": "Shiba",
+    "breed_url": "https://www.nkk.no/raser/shiba-article8114-815.html"
+  },
+  "Shih tzu": {
+    "breed": "Shih tzu",
+    "breed_url": "https://www.nkk.no/raser/shih-tzu-article8122-815.html"
+  },
+  "Siberian husky": {
+    "breed": "Siberian husky",
+    "breed_url": "https://www.nkk.no/raser/siberian-husky-article8191-815.html"
+  },
+  "Silky terrier": {
+    "breed": "Silky terrier",
+    "breed_url": "https://www.nkk.no/raser/silky-terrier-article8237-815.html"
+  },
+  "Skotsk hjortehund": {
+    "breed": "Skotsk hjortehund",
+    "breed_url": "https://www.nkk.no/raser/skotsk-hjortehund-article8357-815.html"
+  },
+  "Skotsk terrier": {
+    "breed": "Skotsk terrier",
+    "breed_url": "https://www.nkk.no/raser/skotsk-terrier-article8227-815.html"
+  },
+  "Skye terrier": {
+    "breed": "Skye terrier",
+    "breed_url": "https://www.nkk.no/raser/skye-terrier-article121074-815.html"
+  },
+  "Sloughi": {
+    "breed": "Sloughi",
+    "breed_url": "https://www.nkk.no/raser/sloughi-article8364-815.html"
+  },
+  "Spansk galgo": {
+    "breed": "Spansk galgo",
+    "breed_url": "https://www.nkk.no/raser/spansk-galgo-article8358-815.html"
+  },
+  "Spansk vannhund": {
+    "breed": "Spansk vannhund",
+    "breed_url": "https://www.nkk.no/raser/spansk-vannhund-article8214-815.html"
+  },
+  "Stabijhoun": {
+    "breed": "Stabijhoun",
+    "breed_url": "https://www.nkk.no/raser/stabijhoun-article8203-815.html"
+  },
+  "Staffordshire bull terrier": {
+    "breed": "Staffordshire bull terrier",
+    "breed_url": "https://www.nkk.no/raser/staffordshire-bull-terrier-article8192-815.html"
+  },
+  "Stor puddel": {
+    "breed": "Stor puddel",
+    "breed_url": "https://www.nkk.no/raser/stor-puddel-article8193-815.html"
+  },
+  "Svensk hvit elghund": {
+    "breed": "Svensk hvit elghund",
+    "breed_url": "https://www.nkk.no/raser/svensk-hvit-elghund-article8245-815.html"
+  },
+  "Svensk lapphund": {
+    "breed": "Svensk lapphund",
+    "breed_url": "https://www.nkk.no/raser/svensk-lapphund-article8285-815.html"
+  },
+  "Tibetansk spaniel": {
+    "breed": "Tibetansk spaniel",
+    "breed_url": "https://www.nkk.no/raser/tibetansk-spaniel-article8207-815.html"
+  },
+  "Tibetansk terrier": {
+    "breed": "Tibetansk terrier",
+    "breed_url": "https://www.nkk.no/raser/tibetansk-terrier-article8194-815.html"
+  },
+  "Toy puddel": {
+    "breed": "Toy puddel",
+    "breed_url": "https://www.nkk.no/raser/toy-puddel-article8149-815.html"
+  },
+  "Tysk jaktterrier": {
+    "breed": "Tysk jaktterrier",
+    "breed_url": "https://www.nkk.no/raser/tysk-jaktterrier-article8250-815.html"
+  },
+  "Ungarsk mynde": {
+    "breed": "Ungarsk mynde",
+    "breed_url": "https://www.nkk.no/raser/ungarsk-mynde-article8359-815.html"
+  },
+  "Ungarsk vizla, korthåret": {
+    "breed": "Ungarsk vizla, korthåret",
+    "breed_url": "https://www.nkk.no/raser/ungarsk-vizla-kortharet-article8197-815.html"
+  },
+  "Ungarsk vizsla, strihåret": {
+    "breed": "Ungarsk vizsla, strihåret",
+    "breed_url": "https://www.nkk.no/raser/ungarsk-vizsla-striharet-article8198-815.html"
+  },
+  "Vestsibirsk laika": {
+    "breed": "Vestsibirsk laika",
+    "breed_url": "https://www.nkk.no/raser/vestsibirsk-laika-article8303-815.html"
+  },
+  "Volpino italiano": {
+    "breed": "Volpino italiano",
+    "breed_url": "https://www.nkk.no/raser/volpino-italiano-article8287-815.html"
+  },
+  "Vorstehhund korthåret": {
+    "breed": "Vorstehhund korthåret",
+    "breed_url": "https://www.nkk.no/raser/vorstehhund-kortharet-article8139-815.html"
+  },
+  "Vorstehhund strihåret": {
+    "breed": "Vorstehhund strihåret",
+    "breed_url": "https://www.nkk.no/raser/vorstehhund-striharet-article8132-815.html"
+  },
+  "Wachtelhund": {
+    "breed": "Wachtelhund",
+    "breed_url": "https://www.nkk.no/raser/wachtelhund-article8312-815.html"
+  },
+  "Weimaraner korthåret": {
+    "breed": "Weimaraner korthåret",
+    "breed_url": "https://www.nkk.no/raser/weimaraner-kortharet-article8200-815.html"
+  },
+  "Weimaraner langhåret": {
+    "breed": "Weimaraner langhåret",
+    "breed_url": "https://www.nkk.no/raser/weimaraner-langharet-article8199-815.html"
+  },
+  "Welsh corgi cardigan": {
+    "breed": "Welsh corgi cardigan",
+    "breed_url": "https://www.nkk.no/raser/welsh-corgi-cardigan-article8211-815.html"
+  },
+  "Welsh corgi pembroke": {
+    "breed": "Welsh corgi pembroke",
+    "breed_url": "https://www.nkk.no/raser/welsh-corgi-pembroke-article8235-815.html"
+  },
+  "Welsh springer spaniel": {
+    "breed": "Welsh springer spaniel",
+    "breed_url": "https://www.nkk.no/raser/welsh-springer-spaniel-article8302-815.html"
+  },
+  "Welsh terrier": {
+    "breed": "Welsh terrier",
+    "breed_url": "https://www.nkk.no/raser/welsh-terrier-article8311-815.html"
+  },
+  "West highland white terrier": {
+    "breed": "West highland white terrier",
+    "breed_url": "https://www.nkk.no/raser/west-highland-white-terrier-article8229-815.html"
+  },
+  "Whippet": {
+    "breed": "Whippet",
+    "breed_url": "https://www.nkk.no/raser/whippet-article8119-815.html"
+  },
+  "Xoloitzcuintle mellom": {
+    "breed": "Xoloitzcuintle mellom",
+    "breed_url": "https://www.nkk.no/raser/xoloitzcuintle-mellom-article8371-815.html"
+  },
+  "Xoloitzcuintle miniatyr": {
+    "breed": "Xoloitzcuintle miniatyr",
+    "breed_url": "https://www.nkk.no/raser/xoloitzcuintle-miniatyr-article8372-815.html"
+  },
+  "Xoloitzcuintle stor": {
+    "breed": "Xoloitzcuintle stor",
+    "breed_url": "https://www.nkk.no/raser/xoloitzcuintle-stor-article8313-815.html"
+  },
+  "Yorkshire terrier": {
+    "breed": "Yorkshire terrier",
+    "breed_url": "https://www.nkk.no/raser/yorkshire-terrier-article8225-815.html"
+  },
+  "Østsibirsk laika": {
+    "breed": "Østsibirsk laika",
+    "breed_url": "https://www.nkk.no/raser/ostsibirsk-laika-article8260-815.html"
+  }
+}
