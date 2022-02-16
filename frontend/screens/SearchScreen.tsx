@@ -99,7 +99,7 @@ export default function SearchScreen() {
   }
 
   return (
-    <View>
+    <View style={{height:'100%', width:'100%', backgroundColor:'blue'}}>
       <SearchAndFilterPanel/>
       <View style={styles.searchScreen}>
       {search.displayType === 4 ?
@@ -112,31 +112,30 @@ export default function SearchScreen() {
               latitudeDelta: 0.005,
               longitudeDelta: 0.005
             }}>
-            <Marker coordinate = {{latitude: 63.427635,longitude: 10.416708}}
-                    pinColor = {"purple"} // any color
-                    title={"title"}
-                    description={"description"}/>
+            <Marker coordinate = {{latitude: 63.427635,longitude: 10.416808}}
+              pinColor = {"purple"} // any color
+              title={"title"}
+              description={"description"}/>
             <Marker coordinate = {{latitude: 63.422941,longitude: 10.403691}}
-                    pinColor = {"purple"} // any color
-                    title={"Dog"}
-                    description={"Stuff"}/>
+              pinColor = {"purple"} // any color
+              title={"Dog"}
+              description={"Stuff"}/>
           </MapView>
-          </View>:
-          <View style={{flexGrow: 1}}>
-            <ScrollView style={[{height: 1, paddingHorizontal: 20}]}>
-              {search.searchResults.length === 0 && search.searchQuery !== '' ?
-                <NoPostSection/> :
-                (search.searchResults.length === 0 ?
-                  <PrevSearchSection prevSearch={prevSearch}/> :
-                  postDisplay(search.displayType, search.searchResults)
-                )
-              }
-              <Button title={"LoadMore"} onPress={() => getPostData(search.searchQuery, filter)}/>
-            </ScrollView>
-          </View>
+        </View>:
+        <View style={{flexGrow: 1}}>
+          <ScrollView style={[{paddingHorizontal: 20, backgroundColor:'green'}]}>
+            {search.searchResults.length === 0 && search.searchQuery !== '' ?
+              <NoPostSection/> :
+              (search.searchResults.length === 0 ?
+                <PrevSearchSection prevSearch={prevSearch}/> :
+                postDisplay(search.displayType, search.searchResults)
+              )
+            }
+            <Button title={"LoadMore"} onPress={() => getPostData(search.searchQuery, filter)}/>
+          </ScrollView>
+        </View>
         }
       </View>
-
     </View>
   );
 }

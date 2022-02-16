@@ -32,7 +32,7 @@ export default function SearchAndFilterPanel() {
   }
 
   function getIconFilter(displayType:number){
-    if(displayType === 1) return <PostSvg/>
+    if (displayType === 1) return <PostSvg/>
     else if (displayType === 2) return <GridSvg/>
     else if (displayType === 3) return <ListSvg/>
     else if (displayType === 4) return <MapSvg color={false}/>

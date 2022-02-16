@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Image,TouchableOpacity, StyleSheet, View} from 'react-native';
+import {Image, TouchableOpacity, StyleSheet, View, Dimensions} from 'react-native';
 import Price from "../elements/Price";
 import Age from "../elements/Age";
 import DogLabel from "../elements/DogLabel";
@@ -12,7 +12,7 @@ export default function BigCard(props:{key:number, post:PostProps, roundCorners:
   return (
     <TouchableOpacity key={props.key} onPress={() => toggleSelected(!selected)}>
       <View style={[styles.cardContainer]}>
-        <View style={selected ? styles.bigCard:[styles.bigCard, styles.cardBorder] }>
+        <View style={selected ? styles.bigCardSelected: styles.bigCard }>
           <Image source={require('../../assets/mock/picture/post-image.jpg')} style={styles.picture}/>
           <View style={styles.infoBar}>
             <Price price={props.post.price}/>
@@ -36,6 +36,7 @@ const styles = StyleSheet.create({
     shadowRadius: 5,
   },
   bigCard: {
+    borderRadius: 10,
     marginBottom: 20,
     width: '100%',
     aspectRatio: 1.1,
@@ -43,8 +44,14 @@ const styles = StyleSheet.create({
     display:"flex",
     flexDirection: "column",
   },
-  cardBorder: {
+  bigCardSelected: {
+    position: "absolute",
+    top:0,
+    left:0,
+    zIndex: 100,
     borderRadius: 10,
+    width: Dimensions.get('window').width,
+    height: Dimensions.get('window').height
   },
   picture:{
     resizeMode: 'cover',
