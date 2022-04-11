@@ -1,4 +1,28 @@
 // Types
+
+export type UserProps = {
+  firstname: string;
+  lastname: string;
+  "age": number;
+  "email": string;
+  "phoneNr": number;
+  "verifiedBreeder": boolean;
+  "pictures": string[];
+  "dogBreeds": string[];
+  "prevSearch": string[];
+}
+
+export type BreederProps = {
+  firstname: string;
+  lastname: string;
+  age: number;
+  email: string;
+  phoneNr: string;
+  verifiedBreeder: boolean;
+  pictures: string[];
+  dogBreeds: string[];
+}
+
 export type PostProps = {
   dogBreed: string;
   price: number;

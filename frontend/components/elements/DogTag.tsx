@@ -3,17 +3,17 @@ import {Image, StyleSheet, Text, View} from 'react-native';
 import Svg, { Path } from "react-native-svg";
 import DogSvg from "../svg/DogSvg"
 import { Dimensions } from 'react-native';
-import DogLogo from './DogLogo'
+import DogButton from './DogButton'
 const screenWidth = Dimensions.get('window').width;
 
 type Dog = {
   breed: string;
 }
 
-export default function DogTag() {
+export default function DogTag(props:{dogBreed:string}) {
   return (
     <View style={styles.dogItem}>
-      <DogLogo/>
+      <DogButton toggleModal={() => console.log(props.dogBreed)} dogBreed={props.dogBreed}/>
       <Text style={styles.dogLogoText}>Hei</Text>
     </View>
   );

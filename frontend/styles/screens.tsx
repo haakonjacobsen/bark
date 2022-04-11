@@ -30,7 +30,7 @@ const defaultStyles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 5,
     marginBottom: 5
-    },
+  },
   sectionHeader:{
     width:'100%',
     marginBottom:10
@@ -43,7 +43,6 @@ const defaultStyles = StyleSheet.create({
   svgContainer:{
     height: '100%',
     aspectRatio: 1,
-    marginRight: 0,
   }
 });
 

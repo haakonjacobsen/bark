@@ -2,8 +2,6 @@ import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import HomeScreen from '../screens/HomeScreen';
 import SearchScreen from '../screens/SearchScreen';
-import FavoriteScreen from '../screens/FavoriteScreen';
-import ProfileScreen from '../screens/ProfileScreen';
 const Tab = createBottomTabNavigator();
 import {StyleSheet, Text, View} from "react-native";
 import { Ionicons } from '@expo/vector-icons';
@@ -11,6 +9,10 @@ import {useFonts,
   OleoScriptSwashCaps_400Regular,
   OleoScriptSwashCaps_700Bold
 } from '@expo-google-fonts/oleo-script-swash-caps'
+import DogPostScreen from "../screens/DogPostScreen";
+import WikiScreen from "../screens/WikiScreen";
+import {PostProps} from "../types/PostProps";
+import {MockPostData} from "../assets/mock/data/MockData";
 
 function Tabs() {
   let [fontsLoaded] = useFonts({
@@ -57,14 +59,17 @@ function Tabs() {
             headerTitleStyle: style.barkHeader,
             tabBarStyle: style.tabStyle
           }}/>
-          <Tab.Screen name="Favorite" component={FavoriteScreen} options={{
-            headerShown: true,
+          <Tab.Screen name="Favorite" component={WikiScreen} options={{
+            headerShown: false,
             headerTitle: 'Bark',
             headerStyle: style.header,
             headerTitleStyle: style.barkHeader,
             tabBarStyle: style.tabStyle
           }}/>
-          <Tab.Screen name="Profile" component={ProfileScreen}/>
+          <Tab.Screen name="Profile" component={DogPostScreen}  options={{
+            headerShown: false,
+            tabBarStyle: style.tabStyle
+          }}/>
         </Tab.Navigator>
     );
   }

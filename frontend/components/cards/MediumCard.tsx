@@ -1,5 +1,5 @@
 import React from 'react';
-import {Image, StyleSheet, View} from 'react-native';
+import {Image, StyleSheet, TouchableOpacity, View} from 'react-native';
 import { Dimensions } from 'react-native';
 import Price from "../elements/Price";
 import Age from "../elements/Age";
@@ -9,7 +9,12 @@ import {PostProps} from "../../types/PostProps";
 
 export default function MediumCard(props:{key:number, post:PostProps}) {
   return (
-    <View key={props.key} style={[styles.cardContainer]}>
+      //TODO: onPress should open a modal for the specific post.
+    <TouchableOpacity
+        key={props.key}
+        style={[styles.cardContainer]}
+        onPress={() => console.log(props.post.dogBreed, props.post.price)}
+    >
       <View style={[styles.mediumCard]}>
         <DogLabel breed={'Golden retriver'} inColumn={false}/>
         <Image source={require('../../assets/mock/picture/post-image.jpg')} style={styles.picture}/>
@@ -18,7 +23,7 @@ export default function MediumCard(props:{key:number, post:PostProps}) {
           <Age age={props.post.dogAge}/>
         </View>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 }
 

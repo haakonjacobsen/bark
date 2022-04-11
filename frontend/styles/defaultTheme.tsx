@@ -1,4 +1,4 @@
-const palette = {
+export const palette = {
     yellow1: '#EDD994',
     yellow2: '#FEF6AA',
     lightGray: '#F9F9F9',
@@ -6,15 +6,14 @@ const palette = {
     black: '#0B0B0B',
     white: '#FFFFFF',
     red: '#FF8585',
-
 }
 
-export const theme = {
+export const defaultTheme = {
     colors: {
         background: palette.white,
         foreground: palette.black,
         primary: palette.yellow1,
-        success: palette.yellow1,
+        success: palette.yellow2,
         danger: palette.red,
         failure: palette.red,
     },
@@ -29,6 +28,7 @@ export const theme = {
             fontFamily: 'Raleway',
             fontSize: 36,
             fontWeight: 'bold',
+            color: palette.darkGray
         },
         body: {
             fontFamily: 'Merriweather',
@@ -38,9 +38,9 @@ export const theme = {
 };
 
 export const darkTheme = {
-    ...theme,
+    ...defaultTheme,
     colors: {
-        ...theme.colors,
+        ...defaultTheme.colors,
         background: palette.black,
         foreground: palette.white,
     }

@@ -1,5 +1,5 @@
 import React from 'react';
-import {Image, ScrollView, StyleSheet, Text, View} from 'react-native';
+import {Image, ImageBackground, ScrollView, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import defaultStyles from '../styles/screens';
 import DogSvg from "../components/svg/DogSvg";
 import { Dimensions } from 'react-native';
@@ -7,11 +7,13 @@ import StatBar from "../components/elements/StatBar";
 import BreedStat from "../components/elements/BreedStat";
 import WikiTextPart from "../components/elements/WikiTextPart";
 import PostNearbyList from "../navigation/PostNearbyList";
+import ArrowSvg from "../components/svg/ArrowSvg";
+import buttonStyles from "../styles/buttonStyles";
 
 const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
 
-export default function WikiScreen(props:{breed:string}) {
+export default function WikiScreen(props:{toggleModalVisible:Function, breed:string}) {
 
   const mockWikiData = {
     stats: {
@@ -29,7 +31,11 @@ export default function WikiScreen(props:{breed:string}) {
 
   return (
     <ScrollView style={defaultStyles.fullScreen}>
-      <Image source={require('../assets/mock/picture/wiki-picture-golden-retriver.jpg')} style={styles.breedPicture}/>
+      <ImageBackground source={require('../assets/mock/picture/wiki-picture-golden-retriver.jpg')} style={styles.breedPicture}>
+        <TouchableOpacity style={styles.closeButton} onPress={() => props.toggleModalVisible(false)}>
+          <ArrowSvg direction={'LEFT'}/>
+        </TouchableOpacity>
+      </ImageBackground>
       <View style={styles.screenContent}>
         <View style={styles.breedRow}>
           <View style={styles.breedSvg}>
@@ -105,5 +111,14 @@ const styles = StyleSheet.create({
   InfoDescription:{
     fontSize: 15,
     fontWeight: '300'
+  },
+  closeButton:{
+    ...buttonStyles.roundButton,
+    position: 'absolute',
+    top: 40,
+    left: 20,
+    height: 40,
+    padding: 8,
+    aspectRatio: 1,
   }
 });

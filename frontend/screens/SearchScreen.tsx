@@ -2,25 +2,22 @@ import React, {useEffect, useState} from 'react';
 import {
   ScrollView,
   Dimensions,
-  SafeAreaView,
   StyleSheet,
   View,
   Button,
-  SafeAreaViewComponent,
-  FlatList
 } from 'react-native';
-import defaultStyles from '../styles/screens';
 import BigCard from "../components/cards/BigCard";
 import MediumCard from "../components/cards/MediumCard";
 import ListCard from "../components/cards/ListCard";
-import {PostProps, FilterState} from "../types/PostProps";
+import {PostProps} from "../types/PostProps";
 import PrevSearchSection from "../components/sections/PrevSearchSection";
 import SearchAndFilterPanel from "../components/panels/SearchAndFilterPanel";
 import NoPostSection from "../components/sections/NoPostSection";
 import MapView, {Marker} from 'react-native-maps';
 import {useDispatch, useSelector} from "react-redux";
 import { RootState } from '../redux/store';
-import {addSearchResults, resetSearchResults, setSearchQuery} from "../redux/features/searchSlice";
+import {addSearchResults} from "../redux/features/searchSlice";
+import {MockData, MockPostData} from "../assets/mock/data/MockData";
 
 const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
@@ -56,13 +53,13 @@ export default function SearchScreen() {
 
   async function getPostData(query:string, filter:Object) {
     try{
-      const postData = await fetch("http://192.168.0.12:4000/graphql", {
+      const postData = await fetch("http://localhost:4000/graphql", {
         method: "POST",
         headers: {'Content-Type': 'application/json', 'Accept': 'application/json',},
         body: JSON.stringify({query: createSearchPostQuery(query, 1, search.searchResults.length)})
       }).then(res => res.json());
+      console.log(postData);
       dispatch(addSearchResults(postData.data.getSearchPost));
-      //updateResult(oldArray => [...oldArray, ...postData.data.getSearchPost]);
     } catch(err){
       console.log(err)
     }
@@ -99,9 +96,9 @@ export default function SearchScreen() {
   }
 
   return (
-    <View style={{height:'100%', width:'100%', backgroundColor:'blue'}}>
+    <View style={styles.searchScreen}>
       <SearchAndFilterPanel/>
-      <View style={styles.searchScreen}>
+      <View style={styles.searchResult}>
       {search.displayType === 4 ?
         <View style={styles.mapContainer}>
           <MapView
@@ -122,8 +119,7 @@ export default function SearchScreen() {
               description={"Stuff"}/>
           </MapView>
         </View>:
-        <View style={{flexGrow: 1}}>
-          <ScrollView style={[{paddingHorizontal: 20, backgroundColor:'green'}]}>
+          <ScrollView style={[{paddingHorizontal: 20}]}>
             {search.searchResults.length === 0 && search.searchQuery !== '' ?
               <NoPostSection/> :
               (search.searchResults.length === 0 ?
@@ -133,7 +129,6 @@ export default function SearchScreen() {
             }
             <Button title={"LoadMore"} onPress={() => getPostData(search.searchQuery, filter)}/>
           </ScrollView>
-        </View>
         }
       </View>
     </View>
@@ -143,7 +138,10 @@ export default function SearchScreen() {
 
 const styles = StyleSheet.create({
   searchScreen:{
-    height: '100%',
+    flex: 1,
+  },
+  searchResult:{
+    flex: 1,
   },
   gridView: {
     display: 'flex',

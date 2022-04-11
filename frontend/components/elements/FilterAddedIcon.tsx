@@ -4,8 +4,6 @@ import defaultStyles from "../../styles/screens";
 import {Dimensions} from "react-native";
 import CloseSvg from "../svg/CloseSvg";
 import {RootState} from "../../redux/store";
-import {FilterState} from "../../types/PostProps";
-import {setDisplayType} from "../../redux/features/searchSlice";
 import {useDispatch, useSelector} from "react-redux";
 import {
     resetDogBreeds,
@@ -14,9 +12,6 @@ import {
     togglePuppies,
     updatePriceInterval
 } from "../../redux/features/filterSlice";
-
-const screenHeight = Dimensions.get('window').height;
-const screenWidth = Dimensions.get('window').width;
 
 // @ts-ignore
 export default function FilterAddedIcon(props:{name:string}) {
@@ -34,14 +29,11 @@ export default function FilterAddedIcon(props:{name:string}) {
 
     /*Returns the correct label text for the filter tags of breeds, and price range*/
     function getFilterText(name:string) {
-        if(name === 'Price') return <Text>{`kr ${price[0]}-${price[1]}`}</Text>
-        else if (name === 'Breeds'){
-            if (dogBreeds.length > 1) {
-                return 'Breeds';
-            }
-            return dogBreeds[0];
-        }
+        if (name === 'Price') return <Text>{`kr ${price[0]}-${price[1]}`}</Text>
+        else if (name === 'Breeds' && dogBreeds.length > 1) return <Text>'Breeds'</Text>;
+        else return <Text>dogBreeds[0]</Text>;
     }
+
     return (
         <View style={[styles.container, defaultStyles.shadowMild]}>
             <TouchableHighlight
@@ -66,7 +58,7 @@ const styles = StyleSheet.create({
         alignSelf: 'flex-start',
         padding: 5,
         marginRight: 15,
-        maxWidth: screenWidth/3,
+        overflow:'hidden',
         backgroundColor: '#EDD994',
         borderRadius: 10,
     },

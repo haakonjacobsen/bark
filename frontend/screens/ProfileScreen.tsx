@@ -6,7 +6,7 @@ import styles from '../styles/screens';
 export default function ProfileScreen() {
   return (
     <View style={styles.defScreen}>
-        <Text>Profile screen</Text>
+        <Text>Ploodosodsosd</Text>
     </View>
   );
 }

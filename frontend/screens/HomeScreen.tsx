@@ -5,12 +5,12 @@ import BigCard from "../components/cards/BigCard";
 import HorizontalList from "../navigation/HorizontalList"
 import PostNearbyList from "../navigation/PostNearbyList";
 import DogMatcher from "../components/cards/DogMatcher";
-import {MockPostData} from "../assets/mock/data/MockPostData";
+import {MockData} from "../assets/mock/data/MockData";
 import {PostProps} from "../types/PostProps";
 
 
 export default function HomeScreen() {
-  const [posts, setPosts] = useState<PostProps[]>(MockPostData);
+  const [posts, setPosts] = useState<PostProps[]>(MockData);
   
   return (
     <ScrollView>

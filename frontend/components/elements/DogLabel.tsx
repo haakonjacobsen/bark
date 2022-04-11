@@ -4,7 +4,7 @@ import DogSvg from "../svg/DogSvg";
 
 
 export default function DogLabel(props: { breed: string; inColumn:boolean}) {
-  const breed = props.breed.split('-').map(s => s.charAt(0).toUpperCase() + s.substr(1)).join(' ');
+  const breed = props.breed.split('-').map(c => c.charAt(0).toUpperCase() + c.substr(1)).join(' ');
 
   if (props.inColumn) {
     return (
