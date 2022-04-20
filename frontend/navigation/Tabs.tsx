@@ -1,9 +1,9 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HomeScreen from '../screens/HomeScreen';
 import SearchScreen from '../screens/SearchScreen';
-const Tab = createBottomTabNavigator();
-import {StyleSheet, Text, View} from "react-native";
+import {Button, StyleSheet, Text, View} from "react-native";
 import { Ionicons } from '@expo/vector-icons';
 import {useFonts,
   OleoScriptSwashCaps_400Regular,
@@ -11,10 +11,42 @@ import {useFonts,
 } from '@expo-google-fonts/oleo-script-swash-caps'
 import DogPostScreen from "../screens/DogPostScreen";
 import WikiScreen from "../screens/WikiScreen";
-import {PostProps} from "../types/PostProps";
-import {MockPostData} from "../assets/mock/data/MockData";
+import StackScreen from "../screens/StackScreen";
+import {NavigationContainer} from "@react-navigation/native";
+import PostScreen from "../screens/PostScreen";
+import ProfileScreen from "../screens/ProfileScreen";
 
-function Tabs() {
+const Stack = createNativeStackNavigator();
+const Tab = createBottomTabNavigator();
+
+function LoginScreen() {
+  return(
+    <View>
+      <Text>Login Screen</Text>
+      <Button title={'loginButton'} onPress={ () => console.log('Logging in')}/>
+    </View>
+  )
+}
+
+function RegisterScreen() {
+  return(
+    <View>
+      <Text>Register Screen</Text>
+    </View>
+  )
+}
+
+function Auth() {
+  return (
+    <Tab.Navigator>
+      <Tab.Screen name="Login" component={LoginScreen} />
+      <Tab.Screen name="Register" component={RegisterScreen} />
+    </Tab.Navigator>
+  );
+}
+
+
+function Home() {
   let [fontsLoaded] = useFonts({
     OleoScriptSwashCaps_400Regular,
   });
@@ -66,13 +98,32 @@ function Tabs() {
             headerTitleStyle: style.barkHeader,
             tabBarStyle: style.tabStyle
           }}/>
-          <Tab.Screen name="Profile" component={DogPostScreen}  options={{
+          <Tab.Screen name="Profile" component={ProfileScreen}  options={{
             headerShown: false,
             tabBarStyle: style.tabStyle
           }}/>
         </Tab.Navigator>
     );
   }
+}
+
+function Tabs() {
+  const [isLoggedIn, setLogin] = useState(true)
+
+  return (
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen
+          name="Home"
+          component={isLoggedIn ? Home:Auth}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen name="WikiScreen" component={WikiScreen}/>
+        <Stack.Screen name="ProfileScreen" component={ProfileScreen}/>
+        <Stack.Screen name="DogPostScreen" component={DogPostScreen} options={{headerTitle:''}}/>
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
 }
 
 const style = StyleSheet.create({

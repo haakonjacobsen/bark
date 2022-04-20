@@ -13,7 +13,9 @@ import buttonStyles from "../styles/buttonStyles";
 const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
 
-export default function WikiScreen(props:{toggleModalVisible:Function, breed:string}) {
+// @ts-ignore
+export default function WikiScreen({route, navigation}) {
+  const { dogBreed } = route.params;
 
   const mockWikiData = {
     stats: {
@@ -31,17 +33,15 @@ export default function WikiScreen(props:{toggleModalVisible:Function, breed:str
 
   return (
     <ScrollView style={defaultStyles.fullScreen}>
+      <Text>{dogBreed}</Text>
       <ImageBackground source={require('../assets/mock/picture/wiki-picture-golden-retriver.jpg')} style={styles.breedPicture}>
-        <TouchableOpacity style={styles.closeButton} onPress={() => props.toggleModalVisible(false)}>
-          <ArrowSvg direction={'LEFT'}/>
-        </TouchableOpacity>
       </ImageBackground>
       <View style={styles.screenContent}>
         <View style={styles.breedRow}>
           <View style={styles.breedSvg}>
             <DogSvg/>
           </View>
-          <Text adjustsFontSizeToFit style={styles.breedText}>{props.breed}</Text>
+          <Text adjustsFontSizeToFit style={styles.breedText}>{dogBreed}</Text>
         </View>
         <View style={styles.BreedStats}>
           <BreedStat statName={"Aktivitetsnivå"} statNumber={1}/>

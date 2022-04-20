@@ -6,17 +6,26 @@ import Age from "../elements/Age";
 import DogLabel from "../elements/DogLabel";
 const screenWidth = Dimensions.get('window').width;
 import {PostProps} from "../../types/PostProps";
+import { useNavigation } from '@react-navigation/native';
 
 export default function MediumCard(props:{key:number, post:PostProps}) {
+  const navigation = useNavigation();
+
   return (
-      //TODO: onPress should open a modal for the specific post.
     <TouchableOpacity
         key={props.key}
         style={[styles.cardContainer]}
-        onPress={() => console.log(props.post.dogBreed, props.post.price)}
+        onPress={() => {
+          navigation.navigate(
+            'DogPostScreen' as never,
+            {
+              post: props.post
+            } as never
+          )
+        }}
     >
       <View style={[styles.mediumCard]}>
-        <DogLabel breed={'Golden retriver'} inColumn={false}/>
+        <DogLabel breed={props.post.dogBreed} inColumn={false}/>
         <Image source={require('../../assets/mock/picture/post-image.jpg')} style={styles.picture}/>
         <View style={styles.infoBar}>
           <Price price={props.post.price}/>

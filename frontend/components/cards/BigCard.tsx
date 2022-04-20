@@ -4,15 +4,23 @@ import Price from "../elements/Price";
 import Age from "../elements/Age";
 import DogLabel from "../elements/DogLabel";
 import {PostProps} from "../../types/PostProps";
+import {useNavigation} from "@react-navigation/native";
 
 
-export default function BigCard(props:{key:number, post:PostProps, roundCorners:boolean}) {
-  const [selected, toggleSelected] = useState(!props.roundCorners);
+export default function BigCard(props:{key:number, post:PostProps}) {
+  const navigation = useNavigation();
 
   return (
-    <TouchableOpacity key={props.key} onPress={() => toggleSelected(!selected)}>
+    <TouchableOpacity key={props.key} onPress={() => {
+      navigation.navigate(
+        'DogPostScreen' as never,
+        {
+          post: props.post
+        } as never
+      )
+    }}>
       <View style={[styles.cardContainer]}>
-        <View style={selected ? styles.bigCardSelected: styles.bigCard }>
+        <View style={styles.bigCard }>
           <Image source={require('../../assets/mock/picture/post-image.jpg')} style={styles.picture}/>
           <View style={styles.infoBar}>
             <Price price={props.post.price}/>

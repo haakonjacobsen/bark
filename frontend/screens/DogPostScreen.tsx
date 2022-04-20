@@ -21,11 +21,11 @@ import WikiScreen from "./WikiScreen";
 const HEIGHT = Dimensions.get('window').height
 const WIDTH = Dimensions.get('window').width
 
-export default function DogPostScreen() {
+// @ts-ignore
+export default function DogPostScreen({route, navigation}) {
+    const {post} = route.params
     const [showFullDescription, toggleFullDescription] = useState(false)
-    const [post, setPost] = useState(MockPostData)
     const [breeder, setSeller] = useState(MockBreederData)
-    const [modalVisible, toggleModalVisible] = useState(false)
 
     function getShortDescription(description:String){
         const maxLength = 30
@@ -35,16 +35,14 @@ export default function DogPostScreen() {
     return (
         <View style={{height:HEIGHT-85}}>
             <ScrollView >
-                <Modal
-                animationType={'slide'}
-                visible={modalVisible}
-                onRequestClose={() => toggleModalVisible(!modalVisible)}>
-                    <WikiScreen toggleModalVisible={toggleModalVisible} breed={post.dogBreed}/>
-                </Modal>
                 <Image source={require('../assets/mock/picture/post-image.jpg')} style={styles.pictures}/>
                 <View style={defaultStyles.defScreen}>
                     <View style={styles.breedInfo}>
-                        <DogButton toggleModal={toggleModalVisible} dogBreed={post.dogBreed}/>
+                        <DogButton toggleModal={() => {
+                            navigation.navigate('WikiScreen', {
+                                dogBreed: post.dogBreed
+                            })}}
+                            dogBreed={post.dogBreed}/>
                         <Text style={styles.dogBreedHeader }>{post.dogBreed}</Text>
                     </View>
                     <View style={styles.postInformation}>
