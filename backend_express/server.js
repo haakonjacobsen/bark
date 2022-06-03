@@ -24,9 +24,7 @@ async function startServer() {
         await mongoose.connect('mongodb+srv://m001-student:things@cluster0.aut3e.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', {
             useUnifiedTopology: true,
             useNewUrlParser: true
-        });
-        
-        console.log('Connected to MongoDB')
+        }, () => {console.log('Connected to MongoDB')});
 
         app.listen(4000, () => console.log("Server is running on port 4000"));
     } catch(err){
