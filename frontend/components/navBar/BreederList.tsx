@@ -1,7 +1,7 @@
 import React from 'react';
 import {ScrollView, StyleSheet, View, Text} from "react-native";
-import Breeder from "../components/elements/DogBreeder";
-import DogTag from "../components/elements/DogTag";
+import Breeder from "../elements/DogBreeder";
+import DogTag from "../elements/DogTag";
 
 type DogBreeder =
   {name: 'Stuff',

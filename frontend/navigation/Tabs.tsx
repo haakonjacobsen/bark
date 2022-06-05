@@ -15,36 +15,11 @@ import StackScreen from "../screens/StackScreen";
 import {NavigationContainer} from "@react-navigation/native";
 import PostScreen from "../screens/PostScreen";
 import ProfileScreen from "../screens/ProfileScreen";
+import FavoriteScreen from "../screens/FavoriteScreen";
+import Auth from "../screens/AuthScreen";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
-
-function LoginScreen() {
-  return(
-    <View>
-      <Text>Login Screen</Text>
-      <Button title={'loginButton'} onPress={ () => console.log('Logging in')}/>
-    </View>
-  )
-}
-
-function RegisterScreen() {
-  return(
-    <View>
-      <Text>Register Screen</Text>
-    </View>
-  )
-}
-
-function Auth() {
-  return (
-    <Tab.Navigator>
-      <Tab.Screen name="Login" component={LoginScreen} />
-      <Tab.Screen name="Register" component={RegisterScreen} />
-    </Tab.Navigator>
-  );
-}
-
 
 function Home() {
   let [fontsLoaded] = useFonts({
@@ -91,7 +66,7 @@ function Home() {
             headerTitleStyle: style.barkHeader,
             tabBarStyle: style.tabStyle
           }}/>
-          <Tab.Screen name="Favorite" component={WikiScreen} options={{
+          <Tab.Screen name="Favorite" component={FavoriteScreen} options={{
             headerShown: false,
             headerTitle: 'Bark',
             headerStyle: style.header,
@@ -108,14 +83,14 @@ function Home() {
 }
 
 function Tabs() {
-  const [isLoggedIn, setLogin] = useState(true)
+  const [isLoggedIn, setLogin] = useState(false)
 
   return (
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen
           name="Home"
-          component={isLoggedIn ? Home:Auth}
+          component={isLoggedIn ? Auth:Home}
           options={{ headerShown: false }}
         />
         <Stack.Screen name="WikiScreen" component={WikiScreen}/>

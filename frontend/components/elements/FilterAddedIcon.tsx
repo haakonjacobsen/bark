@@ -1,4 +1,4 @@
-import {StyleSheet, Text, TouchableHighlight, View} from "react-native";
+import {StyleSheet, Text, TouchableHighlight, TouchableOpacity, View} from "react-native";
 import React, {Dispatch} from "react";
 import defaultStyles from "../../styles/screens";
 import {Dimensions} from "react-native";
@@ -35,14 +35,12 @@ export default function FilterAddedIcon(props:{name:string}) {
     }
 
     return (
-        <View style={[styles.container, defaultStyles.shadowMild]}>
-            <TouchableHighlight
-                activeOpacity={0}
-                underlayColor="#DDDDDD"
+        <View style={[styles.container, defaultStyles.shadowMedium]}>
+            <TouchableOpacity
                 style={defaultStyles.svgContainer}
                 onPress={() => removeFilter(props.name)}>
                 <CloseSvg/>
-            </TouchableHighlight>
+            </TouchableOpacity>
             {/*Checking the price twice in getFilter, need a more efficient method*/}
             {(props.name === 'Price' || props.name ==='Breeds') ?
                 getFilterText(props.name):<Text>{props.name}</Text>

@@ -39,7 +39,7 @@ export default function DogPostScreen({route, navigation}) {
                 <View style={defaultStyles.defScreen}>
                     <View style={styles.breedInfo}>
                         <DogButton toggleModal={() => {
-                            navigation.navigate('WikiScreen', {
+                            navigation.push('WikiScreen', {
                                 dogBreed: post.dogBreed
                             })}}
                             dogBreed={post.dogBreed}/>

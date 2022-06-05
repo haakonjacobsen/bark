@@ -16,11 +16,11 @@ export default function MediumCard(props:{key:number, post:PostProps}) {
         key={props.key}
         style={[styles.cardContainer]}
         onPress={() => {
-          navigation.navigate(
-            'DogPostScreen' as never,
-            {
+          // @ts-ignore
+          navigation.push(
+            'DogPostScreen', {
               post: props.post
-            } as never
+            }
           )
         }}
     >
