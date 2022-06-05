@@ -3,8 +3,8 @@ import User from './models/User.model';
 import {
   CreatePostMutationArgs,
   CreateUserMutationArgs,
-} from './types/mutationArgs';
-import { GetSearchPostQueryArgs } from './types/queryArgs';
+} from './types/MutationArgs';
+import { GetSearchPostQueryArgs } from './types/QueryArgs';
 
 const resolvers = {
   Query: {
