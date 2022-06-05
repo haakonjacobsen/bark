@@ -6,7 +6,7 @@ import { Dimensions } from 'react-native';
 import StatBar from "../components/elements/StatBar";
 import BreedStat from "../components/elements/BreedStat";
 import WikiTextPart from "../components/elements/WikiTextPart";
-import PostNearbyList from "../navigation/PostNearbyList";
+import PostNearbyList from "../components/navBar/PostNearbyList";
 import ArrowSvg from "../components/svg/ArrowSvg";
 import buttonStyles from "../styles/buttonStyles";
 
@@ -14,7 +14,7 @@ const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
 
 // @ts-ignore
-export default function WikiScreen({route, navigation}) {
+export default function WikiScreen({route}) {
   const { dogBreed } = route.params;
 
   const mockWikiData = {

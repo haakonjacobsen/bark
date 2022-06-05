@@ -1,10 +1,10 @@
 import React from 'react';
 import {ScrollView, StyleSheet, View, Text} from "react-native";
-import MediumCard from "../components/cards/MediumCard";
-import defaultStyles from "../styles/screens";
-import {PostProps} from "../types/PostProps";
-import {MockData} from "../assets/mock/data/MockData";
-import BigCard from "../components/cards/BigCard";
+import MediumCard from "../cards/MediumCard";
+import defaultStyles from "../../styles/screens";
+import {PostProps} from "../../types/PostProps";
+import {MockData} from "../../assets/mock/data/MockData";
+import BigCard from "../cards/BigCard";
 
 function PostNearbyList(props:{title:string}) {
   return (

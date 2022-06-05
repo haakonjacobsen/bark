@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import {Button, ScrollView, View} from 'react-native';
 import defaultStyles from '../styles/screens';
 import BigCard from "../components/cards/BigCard";
-import HorizontalList from "../navigation/HorizontalList"
-import PostNearbyList from "../navigation/PostNearbyList";
+import HorizontalList from "../components/navBar/HorizontalList"
+import PostNearbyList from "../components/navBar/PostNearbyList";
 import DogMatcher from "../components/cards/DogMatcher";
 import {MockData} from "../assets/mock/data/MockData";
 import {PostProps} from "../types/PostProps";
