@@ -5,19 +5,22 @@ import { ApolloServer, ExpressContext, gql } from 'apollo-server-express';
 import typeDefs from './typeDefs';
 import resolvers from './resolvers';
 import mongoose, { ConnectOptions } from 'mongoose';
+import dotenv from 'dotenv';
 
 const app = express();
 const port = process.env.PORT || 4003;
 
+dotenv.config();
+
 const connectToDatabase = async (): Promise<void> => {
   console.log('Connecting to MongoDB...');
-  await mongoose.connect(
-    'mongodb+srv://m001-student:things@cluster0.aut3e.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
-    {
-      useUnifiedTopology: true,
-      useNewUrlParser: true,
-    } as ConnectOptions
-  );
+  if (!process.env.MONGODB_URL) {
+    throw new Error('MONGODB_URL is not defined');
+  }
+  await mongoose.connect(process.env.MONGODB_URL, {
+    useUnifiedTopology: true,
+    useNewUrlParser: true,
+  } as ConnectOptions);
   console.log('Connected to MongoDB');
 };
 
