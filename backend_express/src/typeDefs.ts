@@ -1,7 +1,5 @@
 import { gql } from 'apollo-server-express';
 import { GraphQLScalarType, Kind } from 'graphql';
-// const {gql} = require("apollo-server-express");
-// const { GraphQLScalarType, Kind } = require('graphql');
 
 const typeDefs = gql`
   scalar Date
