@@ -12,13 +12,14 @@ const buttonStyles = StyleSheet.create({
         shadowOpacity: 0.15,
         shadowRadius: 5,
     },
-    button:{
+    button :{
         ...defaultStyles.shadowMedium,
         borderRadius: 10,
-        height: '100%',
         padding: 10,
-        justifyContent: "center",
-        alignItems: "center"
+        flexDirection:'row',
+        alignItems:'center',
+        width:"70%",
+        height:50
     }
 });
 

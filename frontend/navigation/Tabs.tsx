@@ -3,20 +3,18 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HomeScreen from '../screens/HomeScreen';
 import SearchScreen from '../screens/SearchScreen';
-import {Button, StyleSheet, Text, View} from "react-native";
+import {StyleSheet, Text, View} from "react-native";
 import { Ionicons } from '@expo/vector-icons';
 import {useFonts,
   OleoScriptSwashCaps_400Regular,
-  OleoScriptSwashCaps_700Bold
 } from '@expo-google-fonts/oleo-script-swash-caps'
 import DogPostScreen from "../screens/DogPostScreen";
 import WikiScreen from "../screens/WikiScreen";
-import StackScreen from "../screens/StackScreen";
 import {NavigationContainer} from "@react-navigation/native";
-import PostScreen from "../screens/PostScreen";
 import ProfileScreen from "../screens/ProfileScreen";
 import FavoriteScreen from "../screens/FavoriteScreen";
 import Auth from "../screens/AuthScreen";
+import {OleoScript_400Regular} from "@expo-google-fonts/oleo-script";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -24,6 +22,7 @@ const Tab = createBottomTabNavigator();
 function Home() {
   let [fontsLoaded] = useFonts({
     OleoScriptSwashCaps_400Regular,
+    OleoScript_400Regular,
   });
   if (!fontsLoaded) {
     return (
@@ -90,7 +89,7 @@ function Tabs() {
       <Stack.Navigator>
         <Stack.Screen
           name="Home"
-          component={isLoggedIn ? Auth:Home}
+          component={isLoggedIn ? Home:Auth}
           options={{ headerShown: false }}
         />
         <Stack.Screen name="WikiScreen" component={WikiScreen}/>

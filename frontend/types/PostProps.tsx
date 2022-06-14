@@ -47,6 +47,13 @@ export type SearchState = {
   searchResults: PostProps[];
 }
 
+export type  AuthProvider = {
+  name: string,
+  icon: string,
+  color: string,
+  authLink: string
+}
+
 // Standard objects and values, move to Redux later
 export const InitialFilter:FilterState = {
   myFavorites: false,
