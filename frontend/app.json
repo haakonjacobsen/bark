@@ -2,6 +2,7 @@
   "expo": {
     "name": "bark",
     "slug": "bark",
+    "scheme": "bark",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -10,6 +11,7 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
+    "originalFullName": "@haakjacobs/bark",
     "updates": {
       "fallbackToCacheTimeout": 0
     },

@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import {
   ImageBackground,
@@ -14,6 +14,12 @@ import textStyles from "../styles/textStyles";
 import svgStyles from "../styles/svgStyles";
 import RegisterIconSvg from "../components/svg/Icons/RegisterIconSvg";
 import LoginIconSvg from "../components/svg/Icons/LoginIconSvg";
+import * as WebBrowser from 'expo-web-browser';
+import * as Google from 'expo-auth-session/providers/google';
+import * as Facebook from 'expo-auth-session/providers/facebook';
+import * as SecureStore from 'expo-secure-store';
+
+WebBrowser.maybeCompleteAuthSession();
 
 const backgroundImg = require('../assets/image/background-login-blurred-1.png');
 
@@ -22,32 +28,74 @@ const AUTH_PROVIDERS:AuthProvider[] = [
     'name': 'Facebook',
     'icon': 'facebook',
     'color': '#3b5998',
-    'authLink': 'https://facebook.com/auth'
+    'authLink': 'https://facebook.com/auth',
+    'provider': Facebook
   },
   {
     'name': 'Apple',
     'icon': 'apple',
     'color': '#000000',
-    'authLink': 'https://apple.com/auth'
+    'authLink': 'https://apple.com/auth',
+    "provider": Google
   },
   {
     'name': 'Google',
     'icon': 'google',
     'color': '#dd4b39',
-    'authLink': 'https://twitter.com/auth'
+    'authLink': 'https://google.com/auth',
+    'provider': Google
   },
 ];
 
 const Tab = createBottomTabNavigator();
 
-
-function loginAuthProvider(authLink:string){
-  console.log(`Logging in at ${authLink}`)
-  // should open safari and do OAuth code flow
-}
-
 //@ts-ignore
 function LoginScreen({navigation}) {
+  const [request, response, promptAsync] = Google.useAuthRequest({
+    expoClientId: '402496035614-6snueitr0fh4c7cinu89ehv7ub0qmvqa.apps.googleusercontent.com',
+    iosClientId: 'GOOGLE_GUID.apps.googleusercontent.com',
+    androidClientId: 'GOOGLE_GUID.apps.googleusercontent.com',
+    webClientId: 'GOOGLE_GUID.apps.googleusercontent.com',
+  });
+
+  async function getUserData(accessToken: string | undefined) {
+    let userInfoResponse = await fetch("https://www.googleapis.com/userinfo/v2/me", {
+      headers: { Authorization: `Bearer ${accessToken}`}
+    });
+    userInfoResponse.json().then(data => {
+      console.log(data);
+    });
+  }
+
+  async function setCredentials(key: string, value: string|undefined) {
+    if (key == null || value == null) {
+      if (typeof value === "string") {
+        await SecureStore.setItemAsync(key, value);
+      }
+    } else {
+      console.log('key or value is null');
+    }
+  }
+
+  async function getValueFor(key: string) {
+    let result = await SecureStore.getItemAsync(key);
+    if (result) {
+      alert("🔐 Here's your value 🔐 \n" + result);
+    } else {
+      alert('No values stored under that key.');
+    }
+  }
+
+  useEffect(() => {
+    if (response?.type === 'success') {
+      console.log('response: ', response.authentication?.accessToken);
+      setCredentials('accessToken', response.authentication?.accessToken);
+      const { authentication } = response;
+      console.log(getUserData(response.authentication?.accessToken));
+      console.log(getValueFor('accessToken'));
+    }
+  }, [response]);
+
   return (
   <ImageBackground source={backgroundImg} resizeMode="cover" style={styles.image}>
     <View style={styles.loginRegisterPanel}>
@@ -58,11 +106,15 @@ function LoginScreen({navigation}) {
             <View style={{marginBottom:20}}>
               <FontAwesome.Button
                 key={key}
+                disabled={!request}
                 name={v.icon}
                 size={25}
                 iconStyle={{width:30}}
                 backgroundColor={v.color}
-                onPress={() => loginAuthProvider(v.authLink)}>
+                onPress={() => {
+                  promptAsync();
+                }}
+              >
                 <Text style={{color:"white", fontWeight:'600'}}>
                   Login with {v.name}
                 </Text>
@@ -101,7 +153,7 @@ function RegisterScreen({navigation}) {
                     size={25}
                     iconStyle={{width:30}}
                     backgroundColor={v.color}
-                    onPress={() => loginAuthProvider(v.authLink)}>
+                    onPress={() => console.log('register with authprovider')}>
                     <Text style={{color:"white", fontWeight:'600'}}>
                       Register with {v.name}
                     </Text>

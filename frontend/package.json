@@ -37,7 +37,10 @@
     "react-native-vector-icons": "^9.1.0",
     "react-native-web": "~0.13.12",
     "react-native-webview": "^11.14.0",
-    "react-redux": "^7.2.6"
+    "react-redux": "^7.2.6",
+    "expo-auth-session": "~3.3.1",
+    "expo-random": "~11.2.0",
+    "expo-secure-store": "~10.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
