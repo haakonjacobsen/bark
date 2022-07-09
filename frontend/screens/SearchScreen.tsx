@@ -53,7 +53,7 @@ export default function SearchScreen() {
 
   async function getPostData(query:string, filter:Object) {
     try{
-      const postData = await fetch("http://localhost:4003/graphql", {
+      const postData = await fetch("http://localhost:4000/graphql", {
         method: "POST",
         headers: {'Content-Type': 'application/json', 'Accept': 'application/json',},
         body: JSON.stringify({query: createSearchPostQuery(query, 1, search.searchResults.length)})

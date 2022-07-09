@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HomeScreen from '../screens/HomeScreen';
@@ -15,6 +15,8 @@ import ProfileScreen from "../screens/ProfileScreen";
 import FavoriteScreen from "../screens/FavoriteScreen";
 import Auth from "../screens/AuthScreen";
 import {OleoScript_400Regular} from "@expo-google-fonts/oleo-script";
+import {useSelector} from "react-redux";
+import {RootState} from "../redux/store";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -33,7 +35,7 @@ function Home() {
     return (
         <Tab.Navigator screenOptions={({route}) => ({
           tabBarIcon: ({focused, color, size}) => {
-            let iconName;
+            let iconName
 
             if (route.name === 'Home') {
               iconName = focused ? 'paw' : 'paw-outline';
@@ -82,7 +84,7 @@ function Home() {
 }
 
 function Tabs() {
-  const [isLoggedIn, setLogin] = useState(false)
+  const isLoggedIn = useSelector((state: RootState) => state.auth.isLoggedIn)
 
   return (
     <NavigationContainer>

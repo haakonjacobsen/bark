@@ -8,7 +8,7 @@ import mongoose, { ConnectOptions } from 'mongoose';
 import dotenv from 'dotenv';
 
 const app = express();
-const port = process.env.PORT || 4003;
+const port = process.env.PORT || 4000;
 
 dotenv.config();
 

@@ -1,17 +1,22 @@
 import { createSlice } from '@reduxjs/toolkit'
-import {InitialFilter} from "../../types/PostProps";
 
 export const authSlice = createSlice({
-  name: 'filter',
-  initialState: InitialFilter,
+  name: 'auth',
+  initialState: {
+    isLoggedIn: false,
+    accessToken: '',
+  },
   reducers: {
     loginUser: (state) => {
-      state.myFavorites = !state.myFavorites;
+      state.isLoggedIn = true
     },
+    logoutUser: (state) => {
+      state.isLoggedIn = false
+      state.accessToken = ''
+    }
   },
 })
 
-// Action creators are generated for each case reducer function
-export const { loginUser } = authSlice.actions
+export const { loginUser, logoutUser } = authSlice.actions
 
 export default authSlice.reducer

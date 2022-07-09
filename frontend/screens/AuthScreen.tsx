@@ -51,9 +51,12 @@ const Tab = createBottomTabNavigator();
 
 //@ts-ignore
 function LoginScreen({navigation}) {
+  const [accessToken, setAccessToken] = React.useState();
+  const [userInfo, setUserInfo] = React.useState();
+
   const [request, response, promptAsync] = Google.useAuthRequest({
     expoClientId: '402496035614-6snueitr0fh4c7cinu89ehv7ub0qmvqa.apps.googleusercontent.com',
-    iosClientId: 'GOOGLE_GUID.apps.googleusercontent.com',
+    iosClientId: '402496035614-2ldjfguahecdlhahlo751oj41ar22l1j.apps.googleusercontent.com',
     androidClientId: 'GOOGLE_GUID.apps.googleusercontent.com',
     webClientId: 'GOOGLE_GUID.apps.googleusercontent.com',
   });
@@ -63,36 +66,15 @@ function LoginScreen({navigation}) {
       headers: { Authorization: `Bearer ${accessToken}`}
     });
     userInfoResponse.json().then(data => {
-      console.log(data);
+      setUserInfo(data);
     });
-  }
-
-  async function setCredentials(key: string, value: string|undefined) {
-    if (key == null || value == null) {
-      if (typeof value === "string") {
-        await SecureStore.setItemAsync(key, value);
-      }
-    } else {
-      console.log('key or value is null');
-    }
-  }
-
-  async function getValueFor(key: string) {
-    let result = await SecureStore.getItemAsync(key);
-    if (result) {
-      alert("🔐 Here's your value 🔐 \n" + result);
-    } else {
-      alert('No values stored under that key.');
-    }
   }
 
   useEffect(() => {
     if (response?.type === 'success') {
       console.log('response: ', response.authentication?.accessToken);
-      setCredentials('accessToken', response.authentication?.accessToken);
-      const { authentication } = response;
-      console.log(getUserData(response.authentication?.accessToken));
-      console.log(getValueFor('accessToken'));
+      // @ts-ignore
+      setAccessToken(response.authentication?.accessToken);
     }
   }, [response]);
 
@@ -111,9 +93,7 @@ function LoginScreen({navigation}) {
                 size={25}
                 iconStyle={{width:30}}
                 backgroundColor={v.color}
-                onPress={() => {
-                  promptAsync();
-                }}
+                onPress={accessToken ? () => getUserData(accessToken) : () => promptAsync()}
               >
                 <Text style={{color:"white", fontWeight:'600'}}>
                   Login with {v.name}
@@ -176,7 +156,7 @@ function RegisterScreen({navigation}) {
   )
 }
 
-export default function Auth() {
+export default function AuthScreen() {
   return (
       <Tab.Navigator>
         <Tab.Screen name="Login" component={LoginScreen} options={{
@@ -224,5 +204,8 @@ const styles = StyleSheet.create({
   loginRegisterButton:{
     ...buttonStyles.button,
     backgroundColor:'white',
+  },
+  userInfo:{
+    flex: 1
   }
 });

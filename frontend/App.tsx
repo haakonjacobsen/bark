@@ -16,7 +16,8 @@ export default function App() {
     return (
       <View>
         <Text>Loading fonts...</Text>
-      </View>)
+      </View>
+    )
   } else {
     return (
       <Provider store={store}>

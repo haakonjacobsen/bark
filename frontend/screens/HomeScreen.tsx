@@ -20,7 +20,7 @@ export default function HomeScreen({ navigation}) {
         <PostNearbyList title={"Dogs nearby"}/>
         <DogMatcher/>
         {posts.map((data, index) => (
-          <BigCard key={index} post={data} roundCorners={true}/>
+          <BigCard key={index} post={data} />
           ))}
       </View>
     </ScrollView>
