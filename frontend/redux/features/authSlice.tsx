@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit'
+import {createSlice, PayloadAction} from '@reduxjs/toolkit'
 
 export const authSlice = createSlice({
   name: 'auth',
@@ -7,8 +7,11 @@ export const authSlice = createSlice({
     accessToken: '',
   },
   reducers: {
-    loginUser: (state) => {
+    loginUser: (state, action: PayloadAction<string | undefined>) => {
       state.isLoggedIn = true
+        if (action.payload){
+          state.accessToken = action.payload
+        }
     },
     logoutUser: (state) => {
       state.isLoggedIn = false

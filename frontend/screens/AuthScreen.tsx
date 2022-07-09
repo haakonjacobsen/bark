@@ -17,7 +17,8 @@ import LoginIconSvg from "../components/svg/Icons/LoginIconSvg";
 import * as WebBrowser from 'expo-web-browser';
 import * as Google from 'expo-auth-session/providers/google';
 import * as Facebook from 'expo-auth-session/providers/facebook';
-import * as SecureStore from 'expo-secure-store';
+import {useDispatch} from "react-redux";
+import {loginUser} from "../redux/features/authSlice";
 
 WebBrowser.maybeCompleteAuthSession();
 
@@ -51,8 +52,7 @@ const Tab = createBottomTabNavigator();
 
 //@ts-ignore
 function LoginScreen({navigation}) {
-  const [accessToken, setAccessToken] = React.useState();
-  const [userInfo, setUserInfo] = React.useState();
+  const dispatch = useDispatch()
 
   const [request, response, promptAsync] = Google.useAuthRequest({
     expoClientId: '402496035614-6snueitr0fh4c7cinu89ehv7ub0qmvqa.apps.googleusercontent.com',
@@ -66,15 +66,14 @@ function LoginScreen({navigation}) {
       headers: { Authorization: `Bearer ${accessToken}`}
     });
     userInfoResponse.json().then(data => {
-      setUserInfo(data);
+      console.log(data.accessToken);
     });
   }
 
   useEffect(() => {
     if (response?.type === 'success') {
-      console.log('response: ', response.authentication?.accessToken);
-      // @ts-ignore
-      setAccessToken(response.authentication?.accessToken);
+      console.log('response: ', response.authentication?.accessToken)
+      dispatch(loginUser(response.authentication?.accessToken))
     }
   }, [response]);
 
@@ -93,7 +92,7 @@ function LoginScreen({navigation}) {
                 size={25}
                 iconStyle={{width:30}}
                 backgroundColor={v.color}
-                onPress={accessToken ? () => getUserData(accessToken) : () => promptAsync()}
+                onPress={() => promptAsync()}
               >
                 <Text style={{color:"white", fontWeight:'600'}}>
                   Login with {v.name}

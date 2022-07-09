@@ -2,9 +2,7 @@ import React from 'react';
 import {ScrollView, StyleSheet, View, Text} from "react-native";
 import MediumCard from "../cards/MediumCard";
 import defaultStyles from "../../styles/screens";
-import {PostProps} from "../../types/PostProps";
 import {MockData} from "../../assets/mock/data/MockData";
-import BigCard from "../cards/BigCard";
 
 function PostNearbyList(props:{title:string}) {
   return (
@@ -14,7 +12,7 @@ function PostNearbyList(props:{title:string}) {
       </View>
       <ScrollView style={styles.listItems} horizontal={true} showsHorizontalScrollIndicator={false}>
         {MockData.map((post, index) =>(
-            <View style={{marginRight:20}}>
+            <View key={index} style={{marginRight:20}}>
               <MediumCard key={index} post={post} />
             </View>
         ))}
