@@ -3,7 +3,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HomeScreen from '../screens/HomeScreen';
 import SearchScreen from '../screens/SearchScreen';
-import {StyleSheet, Text, View} from "react-native";
+import { StyleSheet, Text, TouchableOpacity, View} from "react-native";
 import { Ionicons } from '@expo/vector-icons';
 import {useFonts,
   OleoScriptSwashCaps_400Regular,
@@ -17,6 +17,7 @@ import Auth from "../screens/AuthScreen";
 import {OleoScript_400Regular} from "@expo-google-fonts/oleo-script";
 import {useSelector} from "react-redux";
 import {RootState} from "../redux/store";
+import defaultStyles from "../styles/screens";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -88,13 +89,32 @@ function Tabs() {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator screenOptions={({ navigation, route }) => {
+        console.log(route.params)
+        return {
+          headerTransparent: true,
+          headerTintColor: 'darkgray',
+          headerBackTitleVisible: false,
+          headerBackVisible: false,
+          animation: true ? 'slide_from_left' : 'slide_from_bottom',
+          headerLeft: () => (
+          <TouchableOpacity onPress={() => navigation.goBack()}>
+            <Ionicons
+              name={"chevron-back-circle"}
+              size={40}
+              color="white"
+              style={defaultStyles.shadowMedium}
+            />
+          </TouchableOpacity>)
+      }}}>
         <Stack.Screen
           name="Home"
           component={isLoggedIn ? Home:Auth}
-          options={{ headerShown: false }}
+          options={{
+            headerShown: false
+        }}
         />
-        <Stack.Screen name="WikiScreen" component={WikiScreen}/>
+        <Stack.Screen name={"WikiScreen"} component={WikiScreen} options={{headerTitle:''}}/>
         <Stack.Screen name="ProfileScreen" component={ProfileScreen}/>
         <Stack.Screen name="DogPostScreen" component={DogPostScreen} options={{headerTitle:''}}/>
       </Stack.Navigator>
