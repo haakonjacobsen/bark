@@ -1,6 +1,10 @@
 {
   "extends": "expo/tsconfig.base",
   "compilerOptions": {
-    "strict": true
-  }
+    "strict": true,
+    "paths": {
+      "@env": ["node_modules/<path to the module dist>"] // this mapping is relative to "baseUrl"
+    }
+  },
+  "typeRoots": ["./types"]
 }

@@ -19,6 +19,7 @@ import * as Google from 'expo-auth-session/providers/google';
 import * as Facebook from 'expo-auth-session/providers/facebook';
 import {useDispatch} from "react-redux";
 import {loginUser} from "../redux/features/authSlice";
+import {EXPO_ID, IOS_ID} from '@env'
 
 WebBrowser.maybeCompleteAuthSession();
 
@@ -55,20 +56,11 @@ function LoginScreen({navigation}) {
   const dispatch = useDispatch()
 
   const [request, response, promptAsync] = Google.useAuthRequest({
-    expoClientId: '402496035614-6snueitr0fh4c7cinu89ehv7ub0qmvqa.apps.googleusercontent.com',
-    iosClientId: '402496035614-2ldjfguahecdlhahlo751oj41ar22l1j.apps.googleusercontent.com',
+    expoClientId: EXPO_ID,
+    iosClientId: IOS_ID,
     androidClientId: 'GOOGLE_GUID.apps.googleusercontent.com',
     webClientId: 'GOOGLE_GUID.apps.googleusercontent.com',
   });
-
-  async function getUserData(accessToken: string | undefined) {
-    let userInfoResponse = await fetch("https://www.googleapis.com/userinfo/v2/me", {
-      headers: { Authorization: `Bearer ${accessToken}`}
-    });
-    userInfoResponse.json().then(data => {
-      console.log(data.accessToken);
-    });
-  }
 
   useEffect(() => {
     if (response?.type === 'success') {
