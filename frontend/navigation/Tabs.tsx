@@ -1,22 +1,23 @@
-import React, {useState} from 'react';
+import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HomeScreen from '../screens/HomeScreen';
 import SearchScreen from '../screens/SearchScreen';
-import {Button, StyleSheet, Text, View} from "react-native";
+import { StyleSheet, Text, TouchableOpacity, View} from "react-native";
 import { Ionicons } from '@expo/vector-icons';
 import {useFonts,
   OleoScriptSwashCaps_400Regular,
-  OleoScriptSwashCaps_700Bold
 } from '@expo-google-fonts/oleo-script-swash-caps'
 import DogPostScreen from "../screens/DogPostScreen";
 import WikiScreen from "../screens/WikiScreen";
-import StackScreen from "../screens/StackScreen";
 import {NavigationContainer} from "@react-navigation/native";
-import PostScreen from "../screens/PostScreen";
 import ProfileScreen from "../screens/ProfileScreen";
 import FavoriteScreen from "../screens/FavoriteScreen";
 import Auth from "../screens/AuthScreen";
+import {OleoScript_400Regular} from "@expo-google-fonts/oleo-script";
+import {useSelector} from "react-redux";
+import {RootState} from "../redux/store";
+import defaultStyles from "../styles/screens";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -24,6 +25,7 @@ const Tab = createBottomTabNavigator();
 function Home() {
   let [fontsLoaded] = useFonts({
     OleoScriptSwashCaps_400Regular,
+    OleoScript_400Regular,
   });
   if (!fontsLoaded) {
     return (
@@ -34,7 +36,7 @@ function Home() {
     return (
         <Tab.Navigator screenOptions={({route}) => ({
           tabBarIcon: ({focused, color, size}) => {
-            let iconName;
+            let iconName
 
             if (route.name === 'Home') {
               iconName = focused ? 'paw' : 'paw-outline';
@@ -83,17 +85,36 @@ function Home() {
 }
 
 function Tabs() {
-  const [isLoggedIn, setLogin] = useState(false)
+  const isLoggedIn = useSelector((state: RootState) => state.auth.isLoggedIn)
 
   return (
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator screenOptions={({ navigation, route }) => {
+        console.log(route.params)
+        return {
+          headerTransparent: true,
+          headerTintColor: 'darkgray',
+          headerBackTitleVisible: false,
+          headerBackVisible: false,
+          animation: true ? 'slide_from_left' : 'slide_from_bottom',
+          headerLeft: () => (
+          <TouchableOpacity onPress={() => navigation.goBack()}>
+            <Ionicons
+              name={"chevron-back-circle"}
+              size={40}
+              color="white"
+              style={defaultStyles.shadowMedium}
+            />
+          </TouchableOpacity>)
+      }}}>
         <Stack.Screen
           name="Home"
-          component={isLoggedIn ? Auth:Home}
-          options={{ headerShown: false }}
+          component={isLoggedIn ? Home:Auth}
+          options={{
+            headerShown: false
+        }}
         />
-        <Stack.Screen name="WikiScreen" component={WikiScreen}/>
+        <Stack.Screen name={"WikiScreen"} component={WikiScreen} options={{headerTitle:''}}/>
         <Stack.Screen name="ProfileScreen" component={ProfileScreen}/>
         <Stack.Screen name="DogPostScreen" component={DogPostScreen} options={{headerTitle:''}}/>
       </Stack.Navigator>

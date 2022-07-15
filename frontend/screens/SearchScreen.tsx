@@ -70,7 +70,7 @@ export default function SearchScreen() {
       return(
         <View>
           {postData.map((post, index) =>(
-            <BigCard key={index} post={post} roundCorners={true}/>
+            <BigCard key={index} post={post}/>
           ))}
         </View>
       );

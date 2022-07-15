@@ -18,10 +18,10 @@ function HorizontalList(props:ListProps) {
           <Breeder />
           <Breeder />
           <Breeder />
-          <DogTag />
-          <DogTag />
-          <DogTag />
-          <DogTag />
+          <DogTag dogBreed={'Golden Retriver'}/>
+          <DogTag dogBreed={'Golden Retriver'}/>
+          <DogTag dogBreed={'Golden Retriver'}/>
+          <DogTag dogBreed={'Golden Retriver'}/>
         </ScrollView>
       </View>
   ); 

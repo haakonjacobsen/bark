@@ -1,6 +1,7 @@
 import { StyleSheet, Text, View} from "react-native";
 import React from "react";
 import DogSvg from "../svg/DogSvg";
+import DanskSvenskGaardshund from "../svg/dog-breed-svg/DanskSvenskGaardshund";
 
 
 export default function DogLabel(props: { breed: string; inColumn:boolean}) {
@@ -10,7 +11,7 @@ export default function DogLabel(props: { breed: string; inColumn:boolean}) {
     return (
       <View style={[styles.breedColumn, styles.infoItem]}>
         <View style={styles.breedSvgColumn}>
-          <DogSvg/>
+          <DanskSvenskGaardshund/>
         </View>
         <Text allowFontScaling style={styles.breedTextColumn}>{breed}</Text>
       </View>
@@ -19,7 +20,7 @@ export default function DogLabel(props: { breed: string; inColumn:boolean}) {
     return (
       <View style={styles.breedRow}>
         <View style={styles.breedSvgRow}>
-          <DogSvg/>
+          <DanskSvenskGaardshund/>
         </View>
         <Text allowFontScaling style={styles.breedTextRow}>{breed}</Text>
       </View>

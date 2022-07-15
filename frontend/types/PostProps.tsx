@@ -41,10 +41,25 @@ export type FilterState = {
   //area: GeoJSON
 }
 
+export type AuthState = {
+  user: UserProps | null;
+  token: string | null;
+  error: string | null;
+  loading: boolean;
+}
+
 export type SearchState = {
   displayType: number;
   searchQuery: string;
   searchResults: PostProps[];
+}
+
+export type  AuthProvider = {
+  name: string,
+  icon: any,
+  color: string,
+  authLink: string,
+  provider: any
 }
 
 // Standard objects and values, move to Redux later
@@ -56,3 +71,4 @@ export const InitialFilter:FilterState = {
   dogBreeds:[],
   //area: GeoJSON
 }
+
